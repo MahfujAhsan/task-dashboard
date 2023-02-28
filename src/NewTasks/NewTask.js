@@ -4,7 +4,7 @@ import { GiSandsOfTime } from 'react-icons/gi';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 
-const NewTask = ({ task }) => {
+const NewTask = ({ task, refetch }) => {
     const { name, description, completed, inprogress, canceled } = task;
 
     const setToProgress = async (task) => {
@@ -15,7 +15,7 @@ const NewTask = ({ task }) => {
             inprogress: true,
         };
         try {
-            await fetch(`https://task-manager-server-theta-nine.vercel.app/api/tasks/${task._id}`, {
+            await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const NewTask = ({ task }) => {
             completed: true,
         };
         try {
-            await fetch(`https://task-manager-server-theta-nine.vercel.app/api/tasks/${task._id}`, {
+            await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const NewTask = ({ task }) => {
             canceled: true,
         };
         try {
-            await fetch(`https://task-manager-server-theta-nine.vercel.app/api/tasks/${task._id}`, {
+            await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -81,6 +81,8 @@ const NewTask = ({ task }) => {
             toast(error.message);
         }
     }
+
+    refetch();
 
     return (
         <section>

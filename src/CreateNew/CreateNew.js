@@ -9,7 +9,7 @@ const CreateNew = () => {
     const navigate = useNavigate();
 
     const handleAddDoctor = (data) => {
-        fetch("https://task-manager-server-theta-nine.vercel.app/api/tasks", {
+        fetch("http://localhost:5000/api/tasks", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
