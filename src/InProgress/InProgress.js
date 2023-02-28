@@ -6,7 +6,7 @@ const InProgress = () => {
     const { data: tasks = [], isLoading } = useQuery({
         queryKey: ['tasks'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/api/tasks');
+            const res = await fetch('https://task-manager-server-theta-nine.vercel.app/api/tasks');
             const data = res.json();
             return data;
         }
@@ -19,7 +19,7 @@ const InProgress = () => {
     return (
         <div className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center'>
             {
-                tasks.map((task) => <SingleProgress key={task._id} task={task}/>)
+                tasks.map((task) => <SingleProgress key={task._id} task={task} />)
             }
         </div>
     );

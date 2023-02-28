@@ -14,20 +14,20 @@ const NewTask = ({ task }) => {
             description: task.description,
             inprogress: true,
         };
-        try{
-            await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+        try {
+            await fetch(`https://task-manager-server-theta-nine.vercel.app/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(newFormData)
             })
-            .then(res => res.json())
-            .then(data => {
-                toast.success((`${data?.name} is In Progress!`))
-            })
+                .then(res => res.json())
+                .then(data => {
+                    toast.success((`${data?.name} is In Progress!`))
+                })
         }
-        catch(error) {
+        catch (error) {
             toast(error.message);
         }
     }
@@ -39,20 +39,20 @@ const NewTask = ({ task }) => {
             description: task.description,
             completed: true,
         };
-        try{
-            await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+        try {
+            await fetch(`https://task-manager-server-theta-nine.vercel.app/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(newFormData)
             })
-            .then(res => res.json())
-            .then(data => {
-                toast.success((`${data?.name} is Completed!`))
-            })
+                .then(res => res.json())
+                .then(data => {
+                    toast.success((`${data?.name} is Completed!`))
+                })
         }
-        catch(error) {
+        catch (error) {
             toast(error.message);
         }
     }
@@ -64,20 +64,20 @@ const NewTask = ({ task }) => {
             description: task.description,
             canceled: true,
         };
-        try{
-            await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+        try {
+            await fetch(`https://task-manager-server-theta-nine.vercel.app/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(newFormData)
             })
-            .then(res => res.json())
-            .then(data => {
-                toast.success((`${data?.name} is Canceled!`))
-            })
+                .then(res => res.json())
+                .then(data => {
+                    toast.success((`${data?.name} is Canceled!`))
+                })
         }
-        catch(error) {
+        catch (error) {
             toast(error.message);
         }
     }

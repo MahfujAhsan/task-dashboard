@@ -9,18 +9,18 @@ const CreateNew = () => {
     const navigate = useNavigate();
 
     const handleAddDoctor = (data) => {
-        fetch("http://localhost:5000/api/tasks", {
+        fetch("https://task-manager-server-theta-nine.vercel.app/api/tasks", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         })
-        .then((res) => res.json())
-        .then((data) => {
-            toast.success((`${data?.name} is Added Successfully`))
-            navigate("/new-tasks")
-        })
+            .then((res) => res.json())
+            .then((data) => {
+                toast.success((`${data?.name} is Added Successfully`))
+                navigate("/new-tasks")
+            })
     }
     return (
         <div>
