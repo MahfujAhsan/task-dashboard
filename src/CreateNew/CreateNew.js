@@ -37,7 +37,7 @@ const CreateNew = () => {
                     <label className="my-[15px]">
                         <span className="common__input__label">Description:</span>
                     </label>
-                    <input {...register("description", { required: "Description is Required*" })} type="text" className="common__inputs py-[100px] px-[20px]" />
+                    <input {...register("description", { required: "Description is Required*" })} type="text" className="common__inputs pt-[20px] pb-[200px] px-[20px]" />
                     {errors.description && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.description.message}</p>}
                 </div>
 

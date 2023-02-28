@@ -2,10 +2,13 @@ import React from 'react';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { GiSandsOfTime } from 'react-icons/gi';
 import { IoCloseCircleOutline } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const NewTask = ({ task, refetch }) => {
     const { name, description, completed, inprogress, canceled } = task;
+
+    const navigate = useNavigate();
 
     const setToProgress = async (task) => {
         // console.log(task)
@@ -26,6 +29,8 @@ const NewTask = ({ task, refetch }) => {
                 .then(data => {
                     toast.success((`${data?.name} is In Progress!`))
                 })
+            refetch();
+            // navigate("/in-progress");
         }
         catch (error) {
             toast(error.message);
@@ -50,7 +55,9 @@ const NewTask = ({ task, refetch }) => {
                 .then(res => res.json())
                 .then(data => {
                     toast.success((`${data?.name} is Completed!`))
-                })
+                });
+            refetch();
+            navigate("/completed");
         }
         catch (error) {
             toast(error.message);
@@ -75,17 +82,16 @@ const NewTask = ({ task, refetch }) => {
                 .then(res => res.json())
                 .then(data => {
                     toast.success((`${data?.name} is Canceled!`))
-                })
+                });
+            refetch();
         }
         catch (error) {
             toast(error.message);
         }
     }
 
-    refetch();
-
     return (
-        <section>
+        <>
             {!inprogress && !completed && !canceled === true ?
                 <div className='w-[300px] bg-stone-600 py-[50px] rounded-lg px-[15px] text-[#fff] shadow-lg relative'>
                     <h3><span className='font-bold text-black tracking-wider'>Title: </span>{name}</h3>
@@ -104,7 +110,7 @@ const NewTask = ({ task, refetch }) => {
                     </div>
                 </div> : ""
             }
-        </section>
+        </>
     );
 };
 
