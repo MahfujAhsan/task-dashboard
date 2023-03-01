@@ -8,6 +8,7 @@ import DisplayError from "../DisplayError/DisplayError";
 import InProgress from "../InProgress/InProgress";
 import SignIn from "../Login/SignIn";
 import NewTasks from "../NewTasks/NewTasks";
+import SignUp from "../SignUp/SignUp";
 
 const route = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const route = createBrowserRouter([
             {
                 path: "/login",
                 element: <SignIn></SignIn>
+            },
+            {
+                path: "/signup",
+                element: <SignUp></SignUp>
             },
         ]
     }

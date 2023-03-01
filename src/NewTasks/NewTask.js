@@ -2,10 +2,11 @@ import React from 'react';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { GiSandsOfTime } from 'react-icons/gi';
 import { IoCloseCircleOutline } from 'react-icons/io5';
+// import { MdDeleteOutline } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const NewTask = ({ task, refetch }) => {
+const NewTask = ({ task, refetch, isLoading }) => {
     const { name, description, completed, inprogress, canceled } = task;
 
     const navigate = useNavigate();
@@ -90,6 +91,27 @@ const NewTask = ({ task, refetch }) => {
         }
     }
 
+    // const deleteTask = async (id) => {
+    //     try {
+    //         await fetch(`http://localhost:5000/api/tasks/${id}`, {
+    //             method: "DELETE",
+    //             headers: {'Content-Type': 'application/json'},
+    //         })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             refetch();
+    //             toast.success((`${data?.name} is Deleted!`))
+    //         })
+    //     }
+    //     catch(error) {
+    //         toast(error.message);
+    //     }
+    // };
+
+    if(isLoading) {
+        return <p>Loading...</p>
+    }
+
     return (
         <>
             {!inprogress && !completed && !canceled === true ?
@@ -107,6 +129,9 @@ const NewTask = ({ task, refetch }) => {
                         <button onClick={() => setToCanceled(task)} className='hover:text-stone-900'>
                             <IoCloseCircleOutline size={20} />
                         </button>
+                        {/* <button onClick={() => deleteTask(task._id)} className='hover:text-stone-900'>
+                            <MdDeleteOutline size={20} />
+                        </button> */}
                     </div>
                 </div> : ""
             }

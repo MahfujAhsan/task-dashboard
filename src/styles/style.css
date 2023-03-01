@@ -19,5 +19,5 @@
 }
 
 .input_btn {
-    @apply btn bg-gradient-to-r from-neutral to-slate-600 w-full mx-auto font-bold text-[16px] text-black mt-[15px] border-none uppercase
+    @apply btn bg-gradient-to-r from-stone-600 to-primary w-full mx-auto font-bold text-[16px] text-white mt-[15px] border-none uppercase
 }
