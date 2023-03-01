@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider';
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const { signIn } = useContext(AuthContext);
+
     const [loginError, setLoginError] = useState("");
+    const [loginUserEmail, setLoginUserEmail] = useState("");
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const onSubmit = data => {
         console.log(data)
+        signIn(data.email, data.password)
+        .then((res) => {
+            if(res) {
+                setLoginUserEmail(data.email)
+            }
+        })
+        .catch((err) => {
+            setLoginError(err.message)
+        })
     };
 
     return (
@@ -36,7 +54,7 @@ const SignIn = () => {
                         </div>
 
                         <div className="form-control w-full mx-auto">
-                            <input type="submit" className="btn bg-gradient-to-r from-stone-600 to-primary w-6/12 mx-auto font-caveat font-bold text-[16px] text-white mt-[5px]" value="Submit" />
+                            <input type="submit" className="btn bg-gradient-to-r from-stone-600 to-primary w-6/12 mx-auto font-bold text-[16px] text-white mt-[5px]" value="Submit" />
                         </div>
                         <div>
                             {
@@ -45,10 +63,6 @@ const SignIn = () => {
                         </div>
                     </form>
                     <p className="text-center text-[18px] mt-[35px]">New to <span className='font-semibold text-primary'>Task Manager</span>? <Link className="text-error" to="/signup">Create New Account</Link></p>
-                    <div className="divider w-8/12 mx-auto">OR</div>
-                    <div className="w-8/12 mx-auto">
-                        <button className="btn btn-success w-full font-bold text-white mt-[15px]">Continue With Google</button>
-                    </div>
                 </div>
             </section>
         </div>

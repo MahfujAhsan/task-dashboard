@@ -47,7 +47,7 @@ const route = createBrowserRouter([
             {
                 path: "/signup",
                 element: <SignUp></SignUp>
-            },
+            }
         ]
     }
 ])

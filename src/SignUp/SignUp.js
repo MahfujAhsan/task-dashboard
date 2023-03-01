@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const SignUp = () => {
@@ -13,7 +14,12 @@ const SignUp = () => {
     
 
     const onSubmit = data => {
-        console.log(data)
+        createUser(data.email, data.password)
+        .then(res => {
+            const user = res.user;
+            console.log(user)
+            toast('User created Successfully')
+        });
     };
 
     return (
@@ -46,17 +52,13 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-control w-8/12 mx-auto my-[10px]">
-                            <input type="submit" className="btn bg-gradient-to-r from-neutral to-primary w-8/12 mx-auto font-bold text-[22px] text-white mt-[5px]" value="Register" />
+                            <input type="submit" className="btn bg-gradient-to-r from-stone-600 to-primary w-full mx-auto font-bold text-[16px] text-white mt-[5px] border-none" value="Register" />
                         </div>
                         {
                             signUpError && <p className="text-error">{signUpError}</p>
                         }
                     </form>
                     <p className="text-center text-[18px] mt-[35px] text-primary">Already have an account? <Link className="text-error" to="/login">Please Login</Link></p>
-                    <div className="divider w-8/12 mx-auto">OR</div>
-                    <div className="w-8/12 mx-auto">
-                        <button className="btn btn-success w-full font-pacifico font-bold text-white mt-[15px]">Continue With Google</button>
-                    </div>
                 </div>
             </section>
         </div>
