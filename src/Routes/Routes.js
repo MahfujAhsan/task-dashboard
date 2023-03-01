@@ -6,6 +6,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import DashboardLayout from "../DashboardLayout/DashboardLayout";
 import DisplayError from "../DisplayError/DisplayError";
 import InProgress from "../InProgress/InProgress";
+import SignIn from "../Login/SignIn";
 import NewTasks from "../NewTasks/NewTasks";
 
 const route = createBrowserRouter([
@@ -37,6 +38,10 @@ const route = createBrowserRouter([
             {
                 path: "/canceled",
                 element: <Canceled></Canceled>
+            },
+            {
+                path: "/login",
+                element: <SignIn></SignIn>
             },
         ]
     }
