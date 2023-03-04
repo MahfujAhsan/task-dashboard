@@ -23,6 +23,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
+                    'authorization': 'Bearer ' + localStorage.getItem('token'),
                 },
                 body: JSON.stringify(newFormData)
             })
@@ -50,6 +51,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
+                    'authorization': 'Bearer ' + localStorage.getItem('token'),
                 },
                 body: JSON.stringify(newFormData)
             })
@@ -77,8 +79,9 @@ const NewTask = ({ task, refetch, isLoading }) => {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
+                    'authorization': 'Bearer ' + localStorage.getItem('token'),
                 },
-                body: JSON.stringify(newFormData)
+                body: JSON.stringify({ task: newFormData })
             })
                 .then(res => res.json())
                 .then(data => {
@@ -108,7 +111,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
     //     }
     // };
 
-    if(isLoading) {
+    if (isLoading) {
         return <p>Loading...</p>
     }
 
@@ -116,8 +119,8 @@ const NewTask = ({ task, refetch, isLoading }) => {
         <>
             {!inprogress && !completed && !canceled === true ?
                 <div className='w-[300px] bg-stone-600 py-[50px] rounded-lg px-[15px] text-[#fff] shadow-lg relative'>
-                    <h3><span className='font-bold text-black tracking-wider'>Title: </span>{name}</h3>
-                    <p><span className='font-bold text-black tracking-wider'>Description: </span>{description}</p>
+                    <h3><span className='font-bold text-white tracking-wider'>Title: </span>{name}</h3>
+                    <p><span className='font-bold text-white tracking-wider'>Description: </span>{description}</p>
 
                     <div className='absolute right-2 bottom-2'>
                         <button onClick={() => setToProgress(task)} className='hover:text-stone-900'>

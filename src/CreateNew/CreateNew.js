@@ -13,11 +13,13 @@ const CreateNew = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + localStorage.getItem('token'),
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({ task: data })
         })
             .then((res) => res.json())
             .then((data) => {
+                console.log({ data })
                 toast.success((`${data?.name} is Added Successfully`))
                 navigate("/new-tasks")
             })

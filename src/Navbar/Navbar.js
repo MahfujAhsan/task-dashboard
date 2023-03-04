@@ -9,9 +9,11 @@ const Navbar = () => {
 
     const handleLogout = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                localStorage.removeItem('token');
+            })
             .catch((err) => console.log(err))
-            navigate('/login')
+        navigate('/login')
     }
 
     return (

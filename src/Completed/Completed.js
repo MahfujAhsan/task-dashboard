@@ -6,7 +6,12 @@ const Completed = () => {
     const { data: tasks = [], isLoading } = useQuery({
         queryKey: ['tasks'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/api/tasks');
+            const res = await fetch('http://localhost:5000/api/tasks', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': 'Bearer ' + localStorage.getItem('token'),
+                }
+            });
             const data = res.json();
             return data;
         }

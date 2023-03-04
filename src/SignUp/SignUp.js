@@ -3,26 +3,61 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
+import useToken from '../hooks/useToken';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const { createUser, updateUser } = useContext(AuthContext);
+
     const [signUpError, setSignUpError] = useState('');
 
-    const { createUser, updateUser } = useContext(AuthContext);
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+
+    const [token] = useToken(createdUserEmail)
+
 
     const navigate = useNavigate();
 
-    
+    if (token) {
+        navigate("/");
+    }
+
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/api/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedUserEmail(email);
+            });
+    };
+
 
     const onSubmit = data => {
         createUser(data.email, data.password)
-        .then(res => {
-            const user = res.user;
-            console.log(user)
-            toast('User created Successfully')
-            navigate("/")
-        });
+            .then(res => {
+                const user = res.user;
+                console.log(user)
+                toast('User created & login Successfully')
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUser(data.name, data.email)
+                    })
+                    .catch(err => { console.log(err) })
+                navigate("/")
+            })
+            .catch(err => {
+                setSignUpError(err.message);
+            })
     };
 
     return (

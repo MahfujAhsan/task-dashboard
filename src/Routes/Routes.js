@@ -8,6 +8,7 @@ import DisplayError from "../DisplayError/DisplayError";
 import InProgress from "../InProgress/InProgress";
 import SignIn from "../Login/SignIn";
 import NewTasks from "../NewTasks/NewTasks";
+import PrivateRoute from "../PrivateRoute/Privateroute";
 import SignUp from "../SignUp/SignUp";
 
 const route = createBrowserRouter([
@@ -18,27 +19,39 @@ const route = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Dashboard></Dashboard>
+                element: <PrivateRoute>
+                    <Dashboard></Dashboard>
+                </PrivateRoute>
             },
             {
                 path: "/create-new",
-                element: <CreateNew></CreateNew>
+                element: <PrivateRoute>
+                    <CreateNew></CreateNew>
+                </PrivateRoute>
             },
             {
                 path: "/new-tasks",
-                element: <NewTasks></NewTasks>
+                element: <PrivateRoute>
+                    <NewTasks></NewTasks>
+                </PrivateRoute>
             },
             {
                 path: "/in-progress",
-                element: <InProgress></InProgress>
+                element: <PrivateRoute>
+                    <InProgress></InProgress>
+                </PrivateRoute>
             },
             {
                 path: "/completed",
-                element: <Completed></Completed>
+                element: <PrivateRoute>
+                    <Completed></Completed>
+                </PrivateRoute>
             },
             {
                 path: "/canceled",
-                element: <Canceled></Canceled>
+                element: <PrivateRoute>
+                    <Canceled></Canceled>
+                </PrivateRoute>
             },
             {
                 path: "/login",

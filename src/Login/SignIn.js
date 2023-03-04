@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -11,11 +12,12 @@ const SignIn = () => {
 
     const navigate = useNavigate();
 
-    if(user) {
+    if (user) {
         navigate("/")
     }
 
     const [loginError, setLoginError] = useState("");
+
     const [loginUserEmail, setLoginUserEmail] = useState("");
 
     const location = useLocation();
@@ -23,20 +25,28 @@ const SignIn = () => {
     const from = location.state?.from?.pathname || '/';
 
     const onSubmit = data => {
-        console.log(data)
         signIn(data.email, data.password)
-        .then((res) => {
-            if(res) {
-                setLoginUserEmail(data.email)
-            }
-        })
-        .catch((err) => {
-            setLoginError(err.message)
-        })
+            .then(async (res) => {
+                if (res) {
+                    setLoginUserEmail(data.email);
+
+                    console.log("logged in successfully")
+                    const { data: response } = await axios.post('http://localhost:5000/api/users/login', {
+                        email: data.email,
+                    });
+
+                    if (response.accessToken) {
+                        localStorage.setItem('token', response.accessToken);
+                    }
+                }
+            })
+            .catch((err) => {
+                setLoginError(err.message)
+            })
     };
 
 
-    if(loading) {
+    if (loading) {
         return <p>loading...</p>
     }
 
