@@ -17,7 +17,7 @@ const NewTasks = () => {
     };
 
     return (
-        <section className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center my-[50px]'>
+        <section className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center my-[50px] place-items-center'>
             {
                 tasks.map((task) => <NewTask key={task._id} task={task} refetch={refetch} isLoading={isLoading} />)
             }

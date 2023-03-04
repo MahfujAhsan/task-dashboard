@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
 
@@ -11,6 +11,8 @@ const SignUp = () => {
 
     const { createUser, updateUser } = useContext(AuthContext);
 
+    const navigate = useNavigate();
+
     
 
     const onSubmit = data => {
@@ -19,12 +21,13 @@ const SignUp = () => {
             const user = res.user;
             console.log(user)
             toast('User created Successfully')
+            navigate("/")
         });
     };
 
     return (
         <div>
-            <section className='h-[800px] flex justify-center items-center'>
+            <section className='h-[500px] flex justify-center items-center w-4/12 mx-auto'>
                 <div className="w-full mx-auto py-[45px] rounded-lg">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full mx-auto my-[10px]">

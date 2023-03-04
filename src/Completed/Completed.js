@@ -17,7 +17,7 @@ const Completed = () => {
     };
 
     return (
-        <div className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center'>
+        <div className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center place-items-center'>
             {
                 tasks.map((task) => <SingleCompleted key={task._id} task={task} />)
             }

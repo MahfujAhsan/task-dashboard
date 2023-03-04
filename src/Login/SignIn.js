@@ -6,13 +6,19 @@ import { AuthContext } from '../contexts/AuthProvider';
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { signIn } = useContext(AuthContext);
+
+    const { signIn, user, loading } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    if(user) {
+        navigate("/")
+    }
 
     const [loginError, setLoginError] = useState("");
     const [loginUserEmail, setLoginUserEmail] = useState("");
 
     const location = useLocation();
-    const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
 
@@ -29,9 +35,14 @@ const SignIn = () => {
         })
     };
 
+
+    if(loading) {
+        return <p>loading...</p>
+    }
+
     return (
         <div>
-            <section className='h-[800px] flex justify-center items-center'>
+            <section className='h-[500px] flex justify-center items-center w-4/12 mx-auto'>
                 <div className="w-full mx-auto py-[45px] rounded-lg">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full mx-auto my-[10px]">

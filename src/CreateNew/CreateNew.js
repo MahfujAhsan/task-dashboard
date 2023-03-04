@@ -23,7 +23,7 @@ const CreateNew = () => {
             })
     }
     return (
-        <div>
+        <div className='ml-[50px] mt-[30px]'>
             <form onSubmit={handleSubmit(handleAddDoctor)}>
                 <div className="common__form__control">
                     <label className="my-[15px]">
@@ -41,7 +41,7 @@ const CreateNew = () => {
                     {errors.description && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.description.message}</p>}
                 </div>
 
-                <div className="form-control w-8/12 mx-auto my-[10px]">
+                <div className="form-control w-4/12 my-[10px]">
                     <input type="submit" className="input_btn" value="Add Task" />
                 </div>
             </form>
