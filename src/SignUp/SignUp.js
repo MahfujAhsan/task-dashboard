@@ -25,7 +25,7 @@ const SignUp = () => {
 
     const saveUser = (name, email) => {
         const user = { name, email };
-        fetch('http://localhost:5000/api/users', {
+        fetch('https://task-manager-server-pink.vercel.app/api/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

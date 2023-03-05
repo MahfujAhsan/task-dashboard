@@ -9,7 +9,7 @@ const CreateNew = () => {
     const navigate = useNavigate();
 
     const handleAddDoctor = (data) => {
-        fetch("http://localhost:5000/api/tasks", {
+        fetch("https://task-manager-server-pink.vercel.app/api/tasks", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

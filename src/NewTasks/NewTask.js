@@ -15,7 +15,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
             inprogress: true,
         };
         try {
-            await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+            await fetch(`https://task-manager-server-pink.vercel.app/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
             completed: true,
         };
         try {
-            await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+            await fetch(`https://task-manager-server-pink.vercel.app/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
         };
 
         try {
-            await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+            await fetch(`https://task-manager-server-pink.vercel.app/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -90,18 +90,19 @@ const NewTask = ({ task, refetch, isLoading }) => {
 
     const deleteTask = async (id) => {
         try {
-            await fetch(`http://localhost:5000/api/tasks/${id}`, {
+            await fetch(`https://task-manager-server-pink.vercel.app/api/tasks/${id}`, {
                 method: "DELETE",
-                headers: {'Content-Type': 'application/json','authorization': 'Bearer ' + localStorage.getItem('token'),
-            },
+                headers: {
+                    'Content-Type': 'application/json', 'authorization': 'Bearer ' + localStorage.getItem('token'),
+                },
             })
-            .then(res => res.json())
-            .then(data => {
-                refetch();
-                toast.success((`${data?.name} is Deleted!`))
-            })
+                .then(res => res.json())
+                .then(data => {
+                    refetch();
+                    toast.success((`${data?.name} is Deleted!`))
+                })
         }
-        catch(error) {
+        catch (error) {
             toast(error.message);
         }
     };
@@ -130,10 +131,10 @@ const NewTask = ({ task, refetch, isLoading }) => {
                                 <li><button onClick={() => setToCanceled(task)} className='text-black hover:text-stone-900'>
                                     <AiOutlineCloseCircle fill='black' size={20} /> Cancel
                                 </button></li>
-                                
+
                             </ul>
                         </div>
-                        
+
                         <button onClick={() => deleteTask(task._id)} className='hover:text-stone-900 ml-[4px]'>
                             <MdDeleteOutline size={22} />
                         </button>

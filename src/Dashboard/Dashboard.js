@@ -9,7 +9,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchTasks = async () => {
-            const { data, status } = await axios.get('http://localhost:5000/api/tasks', {
+            const { data, status } = await axios.get('https://task-manager-server-pink.vercel.app/api/tasks', {
                 headers: {
                     'Content-Type': 'application/json',
                     'authorization': 'Bearer ' + localStorage.getItem('token'),
@@ -47,7 +47,7 @@ const Dashboard = () => {
             <h3 className='text-center text-[18px] uppercase border w-2/12 mx-auto rounded-md py-[4px] font-semibold shadow-2xl border-blue-900'>Total Task: {tasks.length}</h3>
             <div className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center place-items-center px-[30px] my-[30px]'>
                 {
-                    tasks.map((task) => <Task key={task._id} task={task}/>)
+                    tasks.map((task) => <Task key={task._id} task={task} />)
                 }
             </div>
         </>
