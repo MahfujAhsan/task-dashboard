@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import { BiGridAlt } from 'react-icons/bi';
 import { AiOutlineEdit, AiOutlineCheckCircle } from 'react-icons/ai';
 import { FaTasks } from 'react-icons/fa';
@@ -14,7 +14,7 @@ const DashboardLayout = () => {
     return (
         <section>
             <Navbar />
-            <div className="drawer drawer-mobile">
+            <div className="drawer drawer-mobile my-[10px] sticky top-0">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
@@ -22,36 +22,36 @@ const DashboardLayout = () => {
                 </div>
                 {user && <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-64 bg-base-100 text-base-content border">
-                        <Link className='common__flex common__items' to='/'>
+                    <ul className="menu p-4 w-64 border border-blue-900 rounded-lg ml-[12px]">
+                        <NavLink exact activeClassName="active" className='common__flex common__items' to='/'>
                             <BiGridAlt size={22} />
-                            <li className='text-[20px]'>Dashboard</li>
-                        </Link>
+                            <li className='text-[20px]'>All Tasks</li>
+                        </NavLink>
 
-                        <Link className='common__flex common__items' to='/create-new'>
+                        <NavLink exact activeClassName="active" className='common__flex common__items' to='/create-new'>
                             <AiOutlineEdit size={22} />
                             <li className='text-[20px]'>Create Task</li>
-                        </Link>
+                        </NavLink>
 
-                        <Link className='common__flex common__items' to='/new-tasks'>
+                        <NavLink exact activeClassName="active" className='common__flex common__items' to='/new-tasks'>
                             <FaTasks size={22} />
                             <li className='text-[20px]'>Task Lists</li>
-                        </Link>
+                        </NavLink>
 
-                        <Link className='common__flex common__items' to='/in-progress'>
+                        <NavLink exact activeClassName="active" className='common__flex common__items' to='/in-progress'>
                             <GrInProgress size={22} />
                             <li className='text-[20px]'>In Progress</li>
-                        </Link>
+                        </NavLink>
 
-                        <Link className='common__flex common__items' to='/completed'>
+                        <NavLink exact activeClassName="active" className='common__flex common__items' to='/completed'>
                             <AiOutlineCheckCircle size={22} />
                             <li className='text-[20px]'>Completed</li>
-                        </Link>
+                        </NavLink>
 
-                        <Link className='common__flex common__items' to='/canceled'>
+                        <NavLink exact activeClassName="active" className='common__flex common__items' to='/canceled'>
                             <IoCloseCircleOutline size={22} />
                             <li className='text-[20px]'>Canceled</li>
-                        </Link>
+                        </NavLink>
                     </ul>
 
                 </div>}

@@ -31,7 +31,7 @@ const CreateNew = () => {
                     <label className="my-[15px]">
                         <span className="common__input__label">Title:</span>
                     </label>
-                    <input {...register("name", { required: "Name is Required*" })} type="text" className="common__inputs px-[20px] py-[10px]" />
+                    <input {...register("name", { required: "Name is Required*" })} placeholder="Task Title" type="text" className="common__inputs px-[20px] py-[10px]" />
                     {errors.name && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.name.message}</p>}
                 </div>
 
@@ -39,7 +39,7 @@ const CreateNew = () => {
                     <label className="my-[15px]">
                         <span className="common__input__label">Description:</span>
                     </label>
-                    <input {...register("description", { required: "Description is Required*" })} type="text" className="common__inputs pt-[20px] pb-[200px] px-[20px]" />
+                    <input {...register("description", { required: "Description is Required*" })} placeholder="Task Information" type="text" className="common__inputs pt-[20px] pb-[200px] px-[20px]" />
                     {errors.description && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.description.message}</p>}
                 </div>
 

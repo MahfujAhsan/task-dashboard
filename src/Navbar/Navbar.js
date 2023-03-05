@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
+import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -17,7 +18,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='px-[100px] py-[20px] flex justify-between items-center'>
+        <div className='px-[100px] py-[10px] flex justify-between items-center shadow-lg mb-[10px] sticky top-0 z-10 bg-white'>
             <div>
                 <Link to="/">
                     <h3 className='text-[26px] uppercase font-bold'><span className='text-blue-700'>Task</span> <span className='text-stone-600'>Manager</span></h3>
@@ -25,9 +26,12 @@ const Navbar = () => {
             </div>
             <div>
                 <ul>
-                    {user?.uid ? <li>
-                        <button onClick={handleLogout} className='bg-primary text-white font-bold px-[20px] py-[7px] rounded-lg shadow-lg text-[14px]'>Logout</button>
-                    </li> : <li>
+                    {user?.uid ? <div className="dropdown">
+                        <label tabIndex={0} className="bg-primary text-white font-bold px-[20px] py-[7px] rounded-lg shadow-lg text-[14px] flex items-center gap-x-[10px] cursor-pointer uppercase">{user?.displayName} <AiOutlineArrowDown size={20}/></label>
+                        <ul tabIndex={0} className="dropdown-content menu shadow bg-base-100 rounded-md px-[10px] py-[4px] mt-[10px]">
+                            <li><button className='px-[18px] py-[4px] font-semibold' onClick={handleLogout}>Logout</button></li>
+                        </ul>
+                    </div> : <li>
                         <Link className='bg-primary text-white font-bold px-[20px] py-[7px] rounded-lg shadow-lg text-[14px]' to="/login">Login</Link>
                     </li>}
                 </ul>

@@ -3,7 +3,7 @@
 }
 
 .common__items {
-    @apply hover:text-blue-900 hover:pl-[10px] hover:border-l-[5px] border-blue-900
+    @apply hover:text-blue-900 hover:pl-[10px] hover:border-l-[5px] border-blue-900 transition-all duration-200
 }
 
 .common__form__control {
@@ -20,4 +20,8 @@
 
 .input_btn {
     @apply btn bg-gradient-to-r from-stone-600 to-primary w-full mx-auto font-bold text-[16px] text-white mt-[15px] border-none uppercase
+}
+
+.active{
+    @apply text-blue-900 pl-[10px] border-l-[5px] border-blue-900 font-semibold
 }
