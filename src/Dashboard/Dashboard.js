@@ -28,7 +28,7 @@ const Dashboard = () => {
                 clearInterval(intervalId);
             }
             count++;
-        }, 200)
+        }, 1000)
     }, [])
 
     // console.log(tasks)
