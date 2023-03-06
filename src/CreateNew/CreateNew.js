@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +10,8 @@ const CreateNew = () => {
     const navigate = useNavigate();
 
     const handleAddDoctor = (data) => {
-        fetch("https://task-manager-server-pink.vercel.app/api/tasks", {
+
+        fetch("http://localhost:5000/api/tasks", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +21,6 @@ const CreateNew = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log({ data })
                 toast.success((`${data?.name} is Added Successfully`))
                 navigate("/new-tasks")
             })

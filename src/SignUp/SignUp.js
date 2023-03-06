@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -25,10 +26,11 @@ const SignUp = () => {
 
     const saveUser = (name, email) => {
         const user = { name, email };
-        fetch('https://task-manager-server-pink.vercel.app/api/users', {
+        fetch('http://localhost:5000/api/users', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': 'Bearer ' + localStorage.getItem('token'),
             },
             body: JSON.stringify(user)
         })
@@ -39,21 +41,20 @@ const SignUp = () => {
     };
 
 
-    const onSubmit = data => {
-        createUser(data.email, data.password)
-            .then(res => {
+    const onSubmit = async (data) => {
+        await createUser(data.email, data.password)
+            .then(async (res) => {
                 const user = res.user;
-                console.log(user)
                 toast('User created & login Successfully')
                 const userInfo = {
                     displayName: data.name
                 }
-                updateUser(userInfo)
+                await updateUser(userInfo)
                     .then(() => {
                         saveUser(data.name, data.email)
                     })
                     .catch(err => { console.log(err) })
-                navigate("/")
+                navigate("/login")
             })
             .catch(err => {
                 setSignUpError(err.message);
