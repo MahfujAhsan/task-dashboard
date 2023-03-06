@@ -120,8 +120,8 @@ const NewTask = ({ task, refetch, isLoading }) => {
                     {/* absolute right-2/4 bottom-2 */}
                     <div className='flex items-center justify-around mt-[18px]'>
                         <div className="dropdown dropdown-hover transition-all ease-in-out duration-200">
-                            <label tabIndex={0} className="cursor-pointer bg-white text-black px-[18px] py-[4px] font-semibold rounded-md flex items-center justify-center gap-x-[5px] border shadow-md">Status Update <AiOutlineDown size={18} /> </label>
-                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-44 mt-[2px]">
+                            <label tabIndex={0} className="cursor-pointer bg-white text-black px-[18px] py-[4px] font-semibold rounded-md flex items-center justify-center gap-x-[5px] border shadow-md">Status <AiOutlineDown size={18} /> </label>
+                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-44 mt-[0px]">
                                 <li><button onClick={() => setToProgress(task)} className='text-black hover:text-stone-900'>
                                     <GiSandsOfTime fill='black' size={20} /> Inprogress
                                 </button></li>
