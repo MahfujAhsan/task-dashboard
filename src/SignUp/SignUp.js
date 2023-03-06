@@ -5,11 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
 import useToken from '../hooks/useToken';
+import Spinner from '../Spinner/Spinner';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, loading } = useContext(AuthContext);
 
     const [signUpError, setSignUpError] = useState('');
 
@@ -34,6 +35,10 @@ const SignUp = () => {
                 setCreatedUserEmail(email);
             });
     };
+
+    if (loading) {
+        return <Spinner />
+    }
 
 
     const onSubmit = async (data) => {
