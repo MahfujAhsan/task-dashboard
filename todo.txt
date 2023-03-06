@@ -3,5 +3,5 @@
 3. Active menu Design - Done
 4. Display all item on Dashboard with status label - Done
 5. No Status in active menu 
-6. Status update in each menu
+6. Status update in each menu - Done
 7. Fixed the scrollbar with NavBar

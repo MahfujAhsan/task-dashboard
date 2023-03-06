@@ -14,7 +14,7 @@ const DashboardLayout = () => {
     return (
         <section>
             <Navbar />
-            <div className="drawer drawer-mobile my-[10px] sticky top-0">
+            <div className="drawer drawer-mobile  fixed">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
