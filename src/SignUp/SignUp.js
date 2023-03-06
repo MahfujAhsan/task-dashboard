@@ -1,4 +1,4 @@
-import { async } from '@firebase/util';
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -15,14 +15,8 @@ const SignUp = () => {
 
     const [createdUserEmail, setCreatedUserEmail] = useState('');
 
-    const [token] = useToken(createdUserEmail)
-
 
     const navigate = useNavigate();
-
-    if (token) {
-        navigate("/");
-    }
 
     const saveUser = (name, email) => {
         const user = { name, email };
@@ -36,6 +30,7 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 setCreatedUserEmail(email);
             });
     };
@@ -44,17 +39,23 @@ const SignUp = () => {
     const onSubmit = async (data) => {
         await createUser(data.email, data.password)
             .then(async (res) => {
-                const user = res.user;
-                toast('User created & please Login')
+                // const user = res.user;
+                toast('Congrats. You Have Registered Successfully & Logged In.')
+                const { data: response } = await axios.post('https://task-manager-server-two-self.vercel.app/api/users/login', {
+                    email: data.email,
+                });
                 const userInfo = {
                     displayName: data.name
                 }
                 await updateUser(userInfo)
                     .then(() => {
                         saveUser(data.name, data.email)
+                        if (response.accessToken) {
+                            localStorage.setItem('token', response.accessToken);
+                        }
                     })
                     .catch(err => { console.log(err) })
-                navigate("/login")
+                navigate("/create-new")
             })
             .catch(err => {
                 setSignUpError(err.message);
