@@ -11,7 +11,7 @@ const CreateNew = () => {
 
     const handleAddDoctor = (data) => {
 
-        fetch("http://localhost:5000/api/tasks", {
+        fetch("https://task-manager-server-two-self.vercel.app/api/tasks", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

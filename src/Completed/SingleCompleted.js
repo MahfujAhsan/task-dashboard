@@ -7,7 +7,7 @@ const SingleCompleted = ({ task, refetch, isLoading }) => {
 
     const deleteTask = async (id) => {
         try {
-            await fetch(`http://localhost:5000/api/tasks/${id}`, {
+            await fetch(`https://task-manager-server-two-self.vercel.app/api/tasks/${id}`, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json', 'authorization': 'Bearer ' + localStorage.getItem('token'),

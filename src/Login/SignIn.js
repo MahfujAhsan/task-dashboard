@@ -31,7 +31,7 @@ const SignIn = () => {
                     setLoginUserEmail(data.email);
 
                     console.log("logged in successfully")
-                    const { data: response } = await axios.post('http://localhost:5000/api/users/login', {
+                    const { data: response } = await axios.post('https://task-manager-server-two-self.vercel.app/api/users/login', {
                         email: data.email,
                     });
 
