@@ -45,7 +45,7 @@ const SignUp = () => {
         await createUser(data.email, data.password)
             .then(async (res) => {
                 const user = res.user;
-                toast('User created & login Successfully')
+                toast('User created & please Login')
                 const userInfo = {
                     displayName: data.name
                 }
