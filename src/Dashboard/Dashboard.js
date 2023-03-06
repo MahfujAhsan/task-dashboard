@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Spinner from '../Spinner/Spinner';
 import Task from './Task';
 
 const Dashboard = () => {
@@ -52,7 +53,7 @@ const Dashboard = () => {
     });
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner />
     };
 
     refetch()

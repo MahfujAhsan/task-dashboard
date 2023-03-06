@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineDown } from 'react-icons/ai';
 import { GiSandsOfTime } from 'react-icons/gi';
 import { MdDeleteOutline } from 'react-icons/md';
+import Spinner from '../Spinner/Spinner';
 
 const SingleProgress = ({ task, refetch, isLoading }) => {
     const { inprogress, name, description } = task;
@@ -27,7 +28,7 @@ const SingleProgress = ({ task, refetch, isLoading }) => {
     };
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner />
     }
     return (
         <>

@@ -3,6 +3,7 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineDown } from 'react
 import { GiSandsOfTime } from 'react-icons/gi';
 import { MdDeleteOutline } from 'react-icons/md';
 import { toast } from 'react-toastify';
+import Spinner from '../Spinner/Spinner';
 
 const NewTask = ({ task, refetch, isLoading }) => {
     const { name, description, completed, inprogress, canceled } = task;
@@ -46,7 +47,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
                     'Content-Type': 'application/json',
                     'authorization': 'Bearer ' + localStorage.getItem('token'),
                 },
-                body: JSON.stringify(newFormData)
+                body: JSON.stringify({ task: newFormData })
             })
                 .then(res => res.json())
                 .then(data => {
@@ -73,7 +74,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
                     'Content-Type': 'application/json',
                     'authorization': 'Bearer ' + localStorage.getItem('token'),
                 },
-                body: JSON.stringify(newFormData)
+                body: JSON.stringify({ task: newFormData })
             })
                 .then(res => res.json())
                 .then(data => {
@@ -107,7 +108,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
     };
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner />
     }
 
     return (

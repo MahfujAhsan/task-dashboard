@@ -10,7 +10,6 @@ const CreateNew = () => {
     const navigate = useNavigate();
 
     const handleAddDoctor = (data) => {
-
         fetch("https://task-manager-server-two-self.vercel.app/api/tasks", {
             method: 'POST',
             headers: {

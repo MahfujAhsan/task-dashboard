@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useFetchTasks from '../hooks/useFetchTasks';
+import Spinner from '../Spinner/Spinner';
 import SingleProgress from './SingleProgress';
 
 
@@ -20,7 +21,7 @@ const InProgress = () => {
     });
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner />
     };
 
     refetch()

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Spinner from '../Spinner/Spinner';
 import SingleCanceled from './SingleCanceled';
 
 const Canceled = () => {
@@ -18,7 +19,7 @@ const Canceled = () => {
     });
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner />
     };
 
     return (

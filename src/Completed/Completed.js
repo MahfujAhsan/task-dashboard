@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Spinner from '../Spinner/Spinner';
 import SingleCompleted from './SingleCompleted';
 
 const Completed = () => {
@@ -18,7 +19,7 @@ const Completed = () => {
     });
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner />
     };
 
     return (

@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
+import Spinner from '../Spinner/Spinner';
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,10 +13,6 @@ const SignIn = () => {
 
     const navigate = useNavigate();
 
-    if (user) {
-        navigate("/create-new")
-    }
-
     const [loginError, setLoginError] = useState("");
 
     const [loginUserEmail, setLoginUserEmail] = useState("");
@@ -23,6 +20,10 @@ const SignIn = () => {
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
+
+    if (loading) {
+        return <Spinner />
+    }
 
     const onSubmit = data => {
         signIn(data.email, data.password)
@@ -38,17 +39,15 @@ const SignIn = () => {
                     if (response.accessToken) {
                         localStorage.setItem('token', response.accessToken);
                     }
+                    navigate("/create-new")
                 }
             })
             .catch((err) => {
                 setLoginError(err.message)
             })
+
     };
 
-
-    if (loading) {
-        return <p>loading...</p>
-    }
 
     return (
         <div>
