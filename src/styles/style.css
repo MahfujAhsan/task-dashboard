@@ -3,7 +3,7 @@
 }
 
 .common__items {
-    @apply hover:text-[#F85185] hover:pl-[10px] hover:border-l-[3px] border-[#46C4CA] transition-all duration-100 hover:font-semibold
+    @apply hover:text-[#F85185] hover:pl-[10px] hover:border-l-[3px] border-[#46C4CA] transition-all duration-100 hover:font-semibold hover:bg-teal-100 py-[5px]
 }
 
 .common__form__control {
