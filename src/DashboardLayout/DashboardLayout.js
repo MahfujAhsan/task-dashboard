@@ -35,7 +35,7 @@ const DashboardLayout = () => {
 
                         <NavLink exact activeClassName="active" className='common__flex common__items' to='/new-tasks'>
                             <FaTasks size={22} />
-                            <li className='text-[20px]'>Task Lists</li>
+                            <li className='text-[20px]'>Task List</li>
                         </NavLink>
 
                         <NavLink exact activeClassName="active" className='common__flex common__items' to='/in-progress'>

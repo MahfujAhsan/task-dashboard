@@ -23,11 +23,14 @@ const Completed = () => {
     };
 
     return (
-        <div className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center place-items-center'>
-            {
-                tasks.map((task) => <SingleCompleted key={task._id} task={task} refetch={refetch} isLoading={isLoading} />)
-            }
-        </div>
+        <section>
+            <h3 className='menu__title'>Completed Task</h3>
+            <div className='card__grid'>
+                {
+                    tasks.map((task) => <SingleCompleted key={task._id} task={task} refetch={refetch} isLoading={isLoading} />)
+                }
+            </div>
+        </section>
     );
 };
 

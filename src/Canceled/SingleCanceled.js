@@ -1,5 +1,6 @@
 import React from 'react';
 import { MdDeleteOutline } from 'react-icons/md';
+import { FaRedoAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 const SingleCanceled = ({ task, refetch, isLoading }) => {
@@ -55,14 +56,16 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
         <>
             {
                 canceled === true ? <>
-                    <div className='w-[300px] py-[50px] rounded-lg px-[15px] text-[#000] shadow-lg relative'>
-                        <h3><span className='font-bold text-black tracking-wider'>Title: </span> {name}</h3>
-                        <p><span className='font-bold text-black tracking-wider'>Description: </span> {description}</p>
+                    <div className='common__card'>
+                        <div className='pb-[20px]'>
+                            <h3 className='font-bold text-black tracking-wider text-[20px] capitalize'>{name}</h3>
+                            <p className='text-[15px] text-[#808080] mt-[6px]'>{description}</p>
+                        </div>
                         <div className='flex items-center justify-around mt-[18px]'>
-                            <button className='px-[18px] py-[4px] bg-blue-900 text-white rounded-md shadow-md' onClick={() => handleUndo(task)}>Undo</button>
+                            <button className='px-[18px] py-[4px] bg-blue-900 text-white rounded-md shadow-md flex items-center gap-x-[5px]' onClick={() => handleUndo(task)}><FaRedoAlt /> Undo</button>
 
                             <button onClick={() => deleteTask(task._id)} className='flex items-center bg-red-600 text-white px-[12px] py-[3px] rounded-md shadow-md font-semibold'>
-                                Delete <MdDeleteOutline size={22} />
+                                <MdDeleteOutline size={22} /> Delete
                             </button>
                         </div>
                     </div>

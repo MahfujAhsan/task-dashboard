@@ -23,10 +23,13 @@ const NewTasks = () => {
     };
 
     return (
-        <section className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center my-[50px] place-items-center'>
-            {
-                tasks.map((task) => <NewTask key={task._id} task={task} refetch={refetch} isLoading={isLoading} />)
-            }
+        <section>
+            <h3 className='menu__title'>Task List</h3>
+            <div className='card__grid'>
+                {
+                    tasks.map((task) => <NewTask key={task._id} task={task} refetch={refetch} isLoading={isLoading} />)
+                }
+            </div>
         </section>
     );
 };

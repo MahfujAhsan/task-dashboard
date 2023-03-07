@@ -1,7 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineDown } from 'react-icons/ai';
-import { GiSandsOfTime } from 'react-icons/gi';
+import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineEdit, AiTwotoneCalendar } from 'react-icons/ai';
 import { MdDeleteOutline } from 'react-icons/md';
 import Spinner from '../Spinner/Spinner';
 
@@ -88,25 +87,35 @@ const SingleProgress = ({ task, refetch, isLoading }) => {
         <>
             {
                 inprogress === true ?
-                    <div className='w-[300px] py-[50px] rounded-lg px-[15px] text-[#000] shadow-lg relative'>
-                        <h3><span className='font-bold text-black tracking-wider'>Title: </span> {name}</h3>
-                        <p><span className='font-bold text-black tracking-wider'>Description: </span> {description}</p>
-                        <div className='flex items-center justify-around mt-[18px]'>
-                            <div className="dropdown dropdown-hover transition-all ease-in-out duration-200">
-                                <label tabIndex={0} className="cursor-pointer bg-white text-black px-[18px] py-[4px] font-semibold rounded-md flex items-center justify-center gap-x-[5px] border shadow-md">Status <AiOutlineDown size={18} /> </label>
-                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-44 mt-[0px]">
-                                    <li><button onClick={() => setToCompleted(task)} className='text-black hover:text-stone-900'>
-                                        <AiOutlineCheckCircle fill='black' size={20} />  Complete
-                                    </button></li>
-                                    <li><button onClick={() => setToCanceled(task)} className=' text-black hover:text-stone-900'>
-                                        <AiOutlineCloseCircle fill='black' size={20} /> Cancel
-                                    </button></li>
+                    <div className='common__card'>
+                        <div className='pb-[20px]'>
+                            <h3 className='font-bold text-black tracking-wider text-[20px] capitalize'>{name}</h3>
+                            <p className='text-[15px] text-[#808080] mt-[6px]'>{description}</p>
+                        </div>
+                        <div className='flex items-center justify-between'>
+                            <div className='flex items-center gap-x-[5px] text-[#808080]'>
+                                <AiTwotoneCalendar size={18} /> <span>{task.createdAt.toString().slice(0, 10)}</span>
+                            </div>
+
+                            <div className="dropdown dropdown-hover">
+                                <label tabIndex={0} className="cursor-pointer"><AiOutlineEdit size={22} fill="#F7A000" /></label>
+                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-32 mt-[0px]">
+                                    <li>
+                                        <button onClick={() => setToCompleted(task)} className='dropdown__btn'>
+                                            <AiOutlineCheckCircle fill='black' size={20} />  Complete
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button onClick={() => setToCanceled(task)} className='dropdown__btn'>
+                                            <AiOutlineCloseCircle fill='black' size={20} /> Cancel
+                                        </button>
+                                    </li>
 
                                 </ul>
                             </div>
 
-                            <button onClick={() => deleteTask(task._id)} className='flex items-center bg-red-600 text-white px-[12px] py-[3px] rounded-md shadow-md font-semibold'>
-                                Delete <MdDeleteOutline size={22} />
+                            <button onClick={() => deleteTask(task._id)} className='flex items-center text-white px-[12px] py-[3px] font-semibold'>
+                                <MdDeleteOutline size={22} fill="#750000" />
                             </button>
                         </div>
                     </div>

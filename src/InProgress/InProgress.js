@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import useFetchTasks from '../hooks/useFetchTasks';
 import Spinner from '../Spinner/Spinner';
 import SingleProgress from './SingleProgress';
 
@@ -27,11 +26,14 @@ const InProgress = () => {
     refetch()
 
     return (
-        <div className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center place-items-center'>
-            {
-                tasks.map((task) => <SingleProgress key={task._id} task={task} refetch={refetch} isLoading={isLoading} />)
-            }
-        </div>
+        <section>
+            <h3 className='menu__title'>Inprogress Task</h3>
+            <div className='card__grid'>
+                {
+                    tasks.map((task) => <SingleProgress key={task._id} task={task} refetch={refetch} isLoading={isLoading} />)
+                }
+            </div>
+        </section>
     );
 };
 

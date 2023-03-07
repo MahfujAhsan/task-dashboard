@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
-import useToken from '../hooks/useToken';
 import Spinner from '../Spinner/Spinner';
 
 const SignUp = () => {
@@ -13,8 +12,6 @@ const SignUp = () => {
     const { createUser, updateUser, loading } = useContext(AuthContext);
 
     const [signUpError, setSignUpError] = useState('');
-
-    const [createdUserEmail, setCreatedUserEmail] = useState('');
 
 
     const navigate = useNavigate();
@@ -32,7 +29,6 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                setCreatedUserEmail(email);
             });
     };
 
@@ -44,7 +40,6 @@ const SignUp = () => {
     const onSubmit = async (data) => {
         await createUser(data.email, data.password)
             .then(async (res) => {
-                // const user = res.user;
                 toast('Congrats. You Have Registered Successfully & Logged In.')
                 const { data: response } = await axios.post('https://task-manager-server-two-self.vercel.app/api/users/login', {
                     email: data.email,
