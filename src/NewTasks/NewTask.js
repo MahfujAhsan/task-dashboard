@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiTwotoneCalendar, AiOutlineEdit } from 'react-icons/ai';
 import { GiSandsOfTime } from 'react-icons/gi';
 import { MdDeleteOutline } from 'react-icons/md';
 import { toast } from 'react-toastify';
+import ConfirmationModal from '../hooks/ConfirmationModal';
 import Spinner from '../Spinner/Spinner';
 
 const NewTask = ({ task, refetch, isLoading }) => {
+
+    const [deletingTask, setDeletingTask] = useState(null);
+
+    const closeModal = () => {
+        setDeletingTask(null);
+    };
+
     const { name, description, completed, inprogress, canceled } = task;
 
     const setToProgress = async (task) => {
@@ -145,10 +153,13 @@ const NewTask = ({ task, refetch, isLoading }) => {
 
                             </ul>
                         </div>
-                        <button onClick={() => deleteTask(task._id)} className='flex items-center text-white px-[12px] py-[3px] font-semibold'>
+                        <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center text-white px-[12px] py-[3px] font-semibold cursor-pointer">
                             <MdDeleteOutline size={22} fill="#750000" />
-                        </button>
+                        </label>
                     </div>
+                    {
+                        deletingTask && <ConfirmationModal title={`Are you sure, you want to delete?`} message={`If you delete "${deletingTask.name}", It cannot be undo.`} closeModal={closeModal} successAction={deleteTask} modalData={deletingTask} successButtonName="Delete"></ConfirmationModal>
+                    }
                 </div> : ""
             }
         </>

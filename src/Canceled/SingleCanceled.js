@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdDeleteOutline } from 'react-icons/md';
 import { FaRedoAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import ConfirmationModal from '../hooks/ConfirmationModal';
 
 const SingleCanceled = ({ task, refetch, isLoading }) => {
+    const [deletingTask, setDeletingTask] = useState(null);
+
+    const closeModal = () => {
+        setDeletingTask(null);
+    };
+
     const { canceled, name, description } = task;
 
     const handleUndo = async (task) => {
@@ -64,10 +71,13 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
                         <div className='flex items-center justify-around mt-[18px]'>
                             <button className='px-[18px] py-[4px] bg-blue-900 text-white rounded-md shadow-md flex items-center gap-x-[5px]' onClick={() => handleUndo(task)}><FaRedoAlt /> Undo</button>
 
-                            <button onClick={() => deleteTask(task._id)} className='flex items-center bg-red-600 text-white px-[12px] py-[3px] rounded-md shadow-md font-semibold'>
+                            <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center bg-red-600 text-white px-[12px] py-[3px] rounded-md shadow-md font-semibold cursor-pointer">
                                 <MdDeleteOutline size={22} /> Delete
-                            </button>
+                            </label>
                         </div>
+                        {
+                            deletingTask && <ConfirmationModal title={`Are you sure, you want to delete?`} message={`If you delete "${deletingTask.name}", It cannot be undo.`} closeModal={closeModal} successAction={deleteTask} modalData={deletingTask} successButtonName="Delete"></ConfirmationModal>
+                        }
                     </div>
                 </> : ""
             }
