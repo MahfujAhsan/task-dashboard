@@ -74,7 +74,7 @@ const SignUp = () => {
                             {errors.name && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.name.message}</p>}
                         </div>
 
-                        <div className="form-control w-full mx-auto my-[10px]">
+                        <div className="form-control w-full mx-auto my-[30px]">
                             <input {...register("email", { required: "Email is Required*" })} type="text" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Email Address' />
                             {errors.email && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.email.message}</p>}
                         </div>
@@ -84,7 +84,7 @@ const SignUp = () => {
                             {errors.password && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.password.message}</p>}
                         </div>
 
-                        <div className="form-control w-12/12 mx-auto my-[10px] mt-[55px]">
+                        <div className="form-control w-12/12 mx-auto  mt-[25px]">
                             <input type="submit" className="btn bg-gradient-to-r from-[#46C4CA] to-[#F85185] w-full mx-auto font-bold text-[16px] text-white mt-[5px] border-none" value="Register" />
                         </div>
                         {

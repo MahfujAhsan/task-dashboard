@@ -28,7 +28,7 @@ const CreateNew = () => {
         <>
             <div>
                 <h3 className='text-[32px] text-center font-mono font-semibold'><span className='text-[#F17D9A]'>Create </span><span className='text-[#46C4CA]'>Task</span></h3>
-                <div className='mx-[20px] my-[30px] flex items-center'>
+                <div className='mx-[20px] my-[20px] flex items-center'>
                     <form className='flex-1' onSubmit={handleSubmit(handleAddDoctor)}>
                         <div className="common__form__control">
                             <input {...register("name", { required: "Name is Required*" })} placeholder="Task Title" type="text" className="common__inputs px-[20px] py-[10px]" />

@@ -24,7 +24,7 @@ const NewTasks = () => {
 
     return (
         <section>
-            <h3 className='menu__title'>Task List</h3>
+            <h3 className='text-[32px] text-center font-mono font-semibold'><span className=' text-[#46C4CA]'>Task </span><span className='text-[#F17D9A]'>List</span></h3>
             <div className='card__grid'>
                 {
                     tasks.map((task) => <NewTask key={task._id} task={task} refetch={refetch} isLoading={isLoading} />)

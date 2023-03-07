@@ -61,13 +61,13 @@ const SignIn = () => {
                             {errors.email && <p className="font-caveat text-[14px] mt-[8px] ml-[4px] font-bold text-error">{errors.email.message}</p>}
                         </div>
 
-                        <div className="form-control w-full mx-auto my-[10px]">
+                        <div className="form-control w-full mx-auto my-[20px]">
                             <input {...register("password", { required: "Password is Required*", minLength: { value: 6, message: "6 char required" } })} type="password" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Password' />
                             {errors.password && <p className="font-caveat text-[14px] mt-[8px] ml-[4px] font-bold text-error">{errors.password.message}</p>}
+                        </div>
                             <label className="label cursor-pointer">
                                 <span className="label-text text-[16px] mt-[10px] font-semibold text-[#808080]">Forgot Password?</span>
                             </label>
-                        </div>
 
                         <div className="form-control w-full mx-auto">
                             <input type="submit" className="btn bg-gradient-to-r from-[#46C4CA] to-[#F85185] border-none w-full mx-auto font-bold text-[16px] text-white mt-[5px]" value="Submit" />

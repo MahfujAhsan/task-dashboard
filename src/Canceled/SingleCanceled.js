@@ -68,7 +68,7 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
                             <h3 className='font-bold text-black tracking-wider text-[20px] capitalize'>{name}</h3>
                             <p className='text-[15px] text-[#808080] mt-[6px]'>{description}</p>
                         </div>
-                        <div className='flex items-center justify-around mt-[18px]'>
+                        <div className='flex items-center justify-between'>
                             <button className='px-[18px] py-[4px] bg-[#46C4CA] text-white rounded-md shadow-md flex items-center gap-x-[5px]' onClick={() => handleUndo(task)}><FaRedoAlt /> Undo</button>
 
                             <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center bg-[#F85185] text-white px-[12px] py-[3px] rounded-md shadow-md font-semibold cursor-pointer">

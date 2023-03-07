@@ -7,7 +7,7 @@
 }
 
 .common__form__control {
-    @apply form-control w-full mx-auto my-[10px]
+    @apply form-control w-full mx-auto my-[20px]
 }
 
 /* .common__input__label {
@@ -22,9 +22,9 @@
     @apply btn bg-gradient-to-r from-[#46C4CA] to-[#F85185] w-full mx-auto font-bold text-[16px] text-white mt-[15px] border-none uppercase
 }
 
-.menu__title {
+/* .menu__title {
     @apply text-center text-[28px] uppercase font-semibold tracking-wider
-}
+} */
 
 .card__grid {
     @apply grid grid-cols-3 gap-y-[30px] my-[50px] place-items-center
@@ -39,5 +39,5 @@
 }
 
 .active{
-    @apply text-[#46C4CA] pl-[10px] border-l-[3px] border-[#46C4CA] font-semibold
+    @apply text-[#46C4CA] pl-[10px] border-l-[3px] border-[#F85185] font-semibold
 }

@@ -27,8 +27,8 @@ const Dashboard = () => {
 
     return (
         <>
-            <h3 className='text-center text-[18px] uppercase border w-2/12 mx-auto rounded-md py-[4px] font-semibold shadow-2xl border-blue-900'>Total Task: {tasks?.length}</h3>
-            <div className='grid grid-cols-3 gap-x-[15px] gap-y-[30px] text-center place-items-center px-[30px] py-[30px]'>
+            <h3 className='text-[32px] text-center font-mono font-semibold'><span className='text-[#F17D9A]'>Total Task: </span><span className='text-[#46C4CA]'>{tasks?.length}</span></h3>
+            <div className='card__grid'>
                 {
                     tasks?.map((task) => <Task key={task._id} task={task} />)
                 }
