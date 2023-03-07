@@ -69,9 +69,9 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
                             <p className='text-[15px] text-[#808080] mt-[6px]'>{description}</p>
                         </div>
                         <div className='flex items-center justify-around mt-[18px]'>
-                            <button className='px-[18px] py-[4px] bg-blue-900 text-white rounded-md shadow-md flex items-center gap-x-[5px]' onClick={() => handleUndo(task)}><FaRedoAlt /> Undo</button>
+                            <button className='px-[18px] py-[4px] bg-[#46C4CA] text-white rounded-md shadow-md flex items-center gap-x-[5px]' onClick={() => handleUndo(task)}><FaRedoAlt /> Undo</button>
 
-                            <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center bg-red-600 text-white px-[12px] py-[3px] rounded-md shadow-md font-semibold cursor-pointer">
+                            <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center bg-[#F85185] text-white px-[12px] py-[3px] rounded-md shadow-md font-semibold cursor-pointer">
                                 <MdDeleteOutline size={22} /> Delete
                             </label>
                         </div>

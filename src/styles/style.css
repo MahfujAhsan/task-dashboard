@@ -3,23 +3,23 @@
 }
 
 .common__items {
-    @apply hover:text-blue-900 hover:pl-[10px] hover:border-l-[3px] border-blue-900 transition-all duration-200
+    @apply hover:text-[#46C4CA] hover:pl-[10px] hover:border-l-[3px] border-[#46C4CA] transition-all duration-200
 }
 
 .common__form__control {
     @apply form-control w-full mx-auto my-[10px]
 }
 
-.common__input__label {
+/* .common__input__label {
     @apply label-text text-[14px] font-bold text-white mb-[5px] bg-slate-600 px-[15px] py-[6px] rounded-lg tracking-wide
-}
+} */
 
 .common__inputs {
-    @apply w-[400px] shadow-md shadow-accent focus:outline-none rounded-lg
+    @apply w-full shadow-md shadow-accent focus:outline-none rounded-lg
 }
 
 .input_btn {
-    @apply btn bg-gradient-to-r from-stone-600 to-primary w-full mx-auto font-bold text-[16px] text-white mt-[15px] border-none uppercase
+    @apply btn bg-gradient-to-r from-[#46C4CA] to-[#F85185] w-full mx-auto font-bold text-[16px] text-white mt-[15px] border-none uppercase
 }
 
 .menu__title {
@@ -39,5 +39,5 @@
 }
 
 .active{
-    @apply text-blue-900 pl-[10px] border-l-[3px] border-blue-900 font-semibold
+    @apply text-[#46C4CA] pl-[10px] border-l-[3px] border-[#46C4CA] font-semibold
 }

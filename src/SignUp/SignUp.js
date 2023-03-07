@@ -41,6 +41,7 @@ const SignUp = () => {
         await createUser(data.email, data.password)
             .then(async (res) => {
                 toast('Congrats. You Have Registered Successfully & Logged In.')
+                navigate("/create-new")
                 const { data: response } = await axios.post('https://task-manager-server-two-self.vercel.app/api/users/login', {
                     email: data.email,
                 });
@@ -55,7 +56,6 @@ const SignUp = () => {
                         }
                     })
                     .catch(err => { console.log(err) })
-                navigate("/create-new")
             })
             .catch(err => {
                 setSignUpError(err.message);
@@ -64,41 +64,34 @@ const SignUp = () => {
 
     return (
         <div>
-            <section className='h-[500px] flex justify-center items-center w-4/12 mx-auto'>
+           
+            <section className='h-screen flex justify-center items-center w-4/12 mx-auto'>
                 <div className="w-full mx-auto py-[45px] rounded-lg">
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        <h3 className='text-[32px] text-center font-mono font-semibold'><span className='text-[#F17D9A]'>Sign</span> <span className='text-[#46C4CA]'>Up</span></h3>
                         <div className="form-control w-full mx-auto my-[10px]">
-                            <label className="label">
-                                <span className="label-text text-[14px] font-bold text-white bg-stone-600 px-[10px] py-[4px] rounded shadow-md">Name:</span>
-                            </label>
-                            <input {...register("name", { required: "Name is Required*" })} type="text" className="input w-full shadow-md shadow-accent focus:outline-none" />
+                            <input {...register("name", { required: "Name is Required*" })} type="text" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Your Name' />
                             {errors.name && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.name.message}</p>}
                         </div>
 
                         <div className="form-control w-full mx-auto my-[10px]">
-                            <label className="label">
-                                <span className="label-text text-[14px] font-bold text-white bg-stone-600 px-[10px] py-[4px] rounded shadow-md">Email:</span>
-                            </label>
-                            <input {...register("email", { required: "Email is Required*" })} type="text" className="input w-full shadow-md shadow-accent focus:outline-none" />
+                            <input {...register("email", { required: "Email is Required*" })} type="text" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Email Address' />
                             {errors.email && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.email.message}</p>}
                         </div>
 
                         <div className="form-control w-full mx-auto my-[10px]">
-                            <label className="label">
-                                <span className="label-text text-[14px] font-bold text-white bg-stone-600 px-[10px] py-[4px] rounded shadow-md">Password:</span>
-                            </label>
-                            <input {...register("password", { required: "Password is Required*", minLength: { value: 6, message: "6 char required" }, pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: "Password must be strong" } })} type="password" className="input w-full shadow-md shadow-accent focus:outline-none" />
+                            <input {...register("password", { required: "Password is Required*", minLength: { value: 6, message: "6 char required" }, pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: "Password must be strong" } })} type="password" placeholder='Password (ex: M@2288)' className="input w-full shadow-md shadow-accent focus:outline-none" />
                             {errors.password && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.password.message}</p>}
                         </div>
 
-                        <div className="form-control w-8/12 mx-auto my-[10px]">
-                            <input type="submit" className="btn bg-gradient-to-r from-stone-600 to-primary w-full mx-auto font-bold text-[16px] text-white mt-[5px] border-none" value="Register" />
+                        <div className="form-control w-12/12 mx-auto my-[10px] mt-[55px]">
+                            <input type="submit" className="btn bg-gradient-to-r from-[#46C4CA] to-[#F85185] w-full mx-auto font-bold text-[16px] text-white mt-[5px] border-none" value="Register" />
                         </div>
                         {
                             signUpError && <p className="text-error">{signUpError}</p>
                         }
                     </form>
-                    <p className="text-center text-[18px] mt-[35px] text-primary">Already have an account? <Link className="text-error" to="/login">Please Login</Link></p>
+                    <p className="text-center text-[16px] mt-[35px] text-[#46C4CA] font-semibold">Already have an account? <Link className="text-[#F85185]" to="/login">Please LOGIN</Link></p>
                 </div>
             </section>
         </div>

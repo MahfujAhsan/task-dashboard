@@ -133,7 +133,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
                         </div>
 
                         <div className="dropdown dropdown-hover">
-                            <label tabIndex={0} className="cursor-pointer"><AiOutlineEdit size={22} fill="#F7A000" /> </label>
+                            <label tabIndex={0} className="cursor-pointer"><AiOutlineEdit size={22} fill="#2A9198" /> </label>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-32 mt-[0px]">
                                 <li>
                                     <button onClick={() => setToProgress(task)} className='dropdown__btn'>
@@ -154,7 +154,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
                             </ul>
                         </div>
                         <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center text-white px-[12px] py-[3px] font-semibold cursor-pointer">
-                            <MdDeleteOutline size={22} fill="#750000" />
+                            <MdDeleteOutline size={22} fill="#F85185" />
                         </label>
                     </div>
                     {
