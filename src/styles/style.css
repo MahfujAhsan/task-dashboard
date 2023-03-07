@@ -3,16 +3,12 @@
 }
 
 .common__items {
-    @apply hover:text-[#46C4CA] hover:pl-[10px] hover:border-l-[3px] border-[#46C4CA] transition-all duration-200
+    @apply hover:text-[#F85185] hover:pl-[10px] hover:border-l-[3px] border-[#46C4CA] transition-all duration-100 hover:font-semibold
 }
 
 .common__form__control {
     @apply form-control w-full mx-auto my-[20px]
 }
-
-/* .common__input__label {
-    @apply label-text text-[14px] font-bold text-white mb-[5px] bg-slate-600 px-[15px] py-[6px] rounded-lg tracking-wide
-} */
 
 .common__inputs {
     @apply w-full shadow-md shadow-accent focus:outline-none rounded-lg
@@ -21,10 +17,6 @@
 .input_btn {
     @apply btn bg-gradient-to-r from-[#46C4CA] to-[#F85185] w-full mx-auto font-bold text-[16px] text-white mt-[15px] border-none uppercase
 }
-
-/* .menu__title {
-    @apply text-center text-[28px] uppercase font-semibold tracking-wider
-} */
 
 .card__grid {
     @apply grid grid-cols-3 gap-y-[30px] my-[50px] place-items-center
