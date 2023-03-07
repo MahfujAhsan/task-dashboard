@@ -35,7 +35,7 @@
 }
 
 .dropdown__btn {
-    @apply text-black hover:text-stone-900 py-[3px] px-[3px] font-semibold text-[14px]
+    @apply text-black hover:text-stone-900 py-[3px] px-[3px] font-semibold text-[14px] hover:rounded
 }
 
 .active{

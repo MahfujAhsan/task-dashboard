@@ -106,13 +106,13 @@ const SingleProgress = ({ task, refetch, isLoading }) => {
 
                             <div className="dropdown dropdown-hover">
                                 <label tabIndex={0} className="cursor-pointer"><AiOutlineEdit size={22} fill="#2A9198" /></label>
-                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-32 mt-[0px]">
+                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-32 mt-[0px] -right-14">
                                     <li>
                                         <button onClick={() => setToCompleted(task)} className='dropdown__btn'>
                                             <AiOutlineCheckCircle fill='black' size={20} />  Complete
                                         </button>
                                     </li>
-                                    <li>
+                                    <li className='mt-[10px]'>
                                         <button onClick={() => setToCanceled(task)} className='dropdown__btn'>
                                             <AiOutlineCloseCircle fill='black' size={20} /> Cancel
                                         </button>

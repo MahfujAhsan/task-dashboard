@@ -101,7 +101,7 @@ const SingleCompleted = ({ task, refetch, isLoading }) => {
                             </div>
                             <div className="dropdown dropdown-hover">
                                 <label tabIndex={0} className="cursor-pointer"><AiOutlineEdit size={22} fill="#2A9198" /></label>
-                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-32 mt-[0px]">
+                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-32 mt-[0px] -right-14">
                                     <li>
                                         <button onClick={() => setToInprogress(task)} className='dropdown__btn'>
                                             <GiSandsOfTime fill='black' size={20} />  Inprogress
