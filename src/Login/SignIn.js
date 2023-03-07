@@ -70,7 +70,7 @@ const SignIn = () => {
                             </label>
 
                         <div className="form-control w-full mx-auto">
-                            <input type="submit" className="btn bg-gradient-to-r from-[#46C4CA] to-[#F85185] border-none w-full mx-auto font-bold text-[16px] text-white mt-[5px]" value="Submit" />
+                            <input type="submit" className="btn bg-gradient-to-r from-[#F85185] to-[#46C4CA] border-none w-full mx-auto font-bold text-[16px] text-white mt-[5px]" value="Login" />
                         </div>
                         <div>
                             {

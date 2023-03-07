@@ -18,7 +18,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='px-[100px] py-[10px] flex justify-between items-center shadow-lg mb-[10px] sticky top-0 z-10 bg-white'>
+        <div className='px-[100px] py-[10px] flex justify-between items-center shadow-xl mb-[10px] sticky top-0 z-10 bg-white mx-[1px] rounded-lg'>
             <div>
                 <Link to="/">
                     <h3 className='text-[26px] uppercase font-bold'><span className='text-[#46C4CA]'>Task</span> <span className='text-[#F17D9A]'>Manager</span></h3>

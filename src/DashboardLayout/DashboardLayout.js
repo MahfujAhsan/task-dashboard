@@ -22,7 +22,7 @@ const DashboardLayout = () => {
                 </div>
                 {user && <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-64 shadow-[#808080] shadow-inner ">
+                    <ul className="menu p-4 w-64 shadow-[#808080] shadow-inner border-none ml-[1px] rounded-lg">
                         <NavLink exact activeClassName="active" className='common__flex common__items' to='/'>
                             <BiGridAlt size={22} />
                             <li className='text-[20px]'>All Tasks</li>
