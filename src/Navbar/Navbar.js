@@ -26,7 +26,7 @@ const Navbar = () => {
                 </Link>
             </div>
             <div>
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden"><GoThreeBars size={24} /></label>
+                <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden"><GoThreeBars size={24} /></label>
                 <ul className='hidden md:block'>
                     {user?.uid ? <div className="dropdown">
                         <label tabIndex={0} className="bg-[#46C4CA] text-white font-bold px-[20px] py-[7px] rounded-lg shadow-lg text-[14px] flex items-center gap-x-[10px] cursor-pointer uppercase">{user?.displayName} <AiOutlineArrowDown size={20}/></label>
