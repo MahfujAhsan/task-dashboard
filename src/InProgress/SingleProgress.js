@@ -100,30 +100,38 @@ const SingleProgress = ({ task, refetch, isLoading }) => {
                             <p className='text-[15px] text-[#808080] mt-[6px]'>{description}</p>
                         </div>
                         <div className='flex items-center justify-between'>
-                            <div className='flex items-center gap-x-[5px] text-[#808080]'>
-                                <AiTwotoneCalendar size={18} /> <span>{task.createdAt.toString().slice(0, 10)}</span>
+                            <div className='flex items-center gap-[10px]'>
+                                <div className='flex items-center gap-x-[5px] text-[#808080]'>
+                                    <AiTwotoneCalendar size={18} /> <span>{task.createdAt.toString().slice(0, 10)}</span>
+                                </div>
+
+                                <div className="dropdown dropdown-bottom">
+                                    <label tabIndex={0} className="cursor-pointer"><AiOutlineEdit size={22} fill="#2A9198" /></label>
+                                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-32 mt-[0px] -right-14">
+                                        <li>
+                                            <button onClick={() => setToCompleted(task)} className='dropdown__btn'>
+                                                <AiOutlineCheckCircle fill='black' size={20} />  Complete
+                                            </button>
+                                        </li>
+                                        <li className='mt-[10px]'>
+                                            <button onClick={() => setToCanceled(task)} className='dropdown__btn'>
+                                                <AiOutlineCloseCircle fill='black' size={20} /> Cancel
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center text-white px-[12px] py-[3px] font-semibold cursor-pointer">
+                                    <MdDeleteOutline size={22} fill="#F85185" />
+                                </label>
                             </div>
 
-                            <div className="dropdown dropdown-hover">
-                                <label tabIndex={0} className="cursor-pointer"><AiOutlineEdit size={22} fill="#2A9198" /></label>
-                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-stone-100 rounded-box w-32 mt-[0px] -right-14">
-                                    <li>
-                                        <button onClick={() => setToCompleted(task)} className='dropdown__btn'>
-                                            <AiOutlineCheckCircle fill='black' size={20} />  Complete
-                                        </button>
-                                    </li>
-                                    <li className='mt-[10px]'>
-                                        <button onClick={() => setToCanceled(task)} className='dropdown__btn'>
-                                            <AiOutlineCloseCircle fill='black' size={20} /> Cancel
-                                        </button>
-                                    </li>
-
-                                </ul>
+                            <div>
+                                {
+                                    inprogress && <span className='bg-[#46C4CA] px-[8px] py-[3px] text-white rounded-md shadow-md text-[10px] font-semibold uppercase'>Inprogress</span>
+                                }
                             </div>
-
-                            <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center text-white px-[12px] py-[3px] font-semibold cursor-pointer">
-                                <MdDeleteOutline size={22} fill="#F85185" />
-                            </label>
                         </div>
                         {
                             deletingTask && <ConfirmationModal title={`Are you sure, you want to delete?`} message={`If you delete "${deletingTask.name}", It cannot be undo.`} closeModal={closeModal} successAction={deleteTask} modalData={deletingTask} successButtonName="Delete"></ConfirmationModal>

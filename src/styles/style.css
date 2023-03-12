@@ -1,5 +1,5 @@
 .common__flex {
-    @apply flex items-center gap-x-[8px] mt-[25px]
+    @apply flex justify-center md:justify-start items-center gap-x-[8px] mt-[25px]
 }
 
 .common__items {
@@ -19,7 +19,7 @@
 }
 
 .card__grid {
-    @apply grid grid-cols-3 gap-y-[30px] my-[50px] place-items-center
+    @apply grid grid-cols-1 md:grid-cols-3 gap-y-[30px] mt-[35px] mb-[150px] md:mb-[50px] place-items-center
 }
 
 .common__card {
@@ -31,5 +31,5 @@
 }
 
 .active{
-    @apply text-[#46C4CA] pl-[10px] border-l-[3px] border-[#F85185] font-semibold
+    @apply text-[#46C4CA] pl-[10px] border-l-[3px] md:border-[#F85185] font-semibold
 }

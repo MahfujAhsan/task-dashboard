@@ -15,8 +15,6 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
 
     const handleUndo = async (task) => {
         const newFormData = {
-            name: task.name,
-            description: task.description,
             completed: false,
             inprogress: false,
             canceled: false
@@ -32,9 +30,9 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
             })
                 .then(res => res.json())
                 .then(data => {
+                    refetch();
                     toast.success((`${data?.name} undo successfully!`))
                 })
-            refetch();
         }
         catch (error) {
             toast(error.message);
@@ -51,8 +49,8 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    refetch();
                     toast.success((`${data?.name} is Deleted!`))
+                    refetch();
                 })
         }
         catch (error) {
@@ -65,7 +63,15 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
                 canceled === true ? <>
                     <div className='common__card'>
                         <div className='pb-[20px]'>
-                            <h3 className='font-bold text-black tracking-wider text-[20px] capitalize'>{name}</h3>
+                            <div className='flex justify-between items-center'>
+                                <h3 className='font-bold text-black tracking-wider text-[20px] capitalize'>{name}</h3>
+                                <div>
+                                    {
+                                        canceled && <span className='bg-[#F17D9A] px-[8px] py-[3px] text-white rounded-md shadow-md text-[10px] font-semibold uppercase'>Canceled</span>
+                                    }
+                                </div>
+
+                            </div>
                             <p className='text-[15px] text-[#808080] mt-[6px]'>{description}</p>
                         </div>
                         <div className='flex items-center justify-between'>
@@ -74,7 +80,9 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
                             <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center bg-[#F85185] text-white px-[12px] py-[3px] rounded-md shadow-md font-semibold cursor-pointer">
                                 <MdDeleteOutline size={22} /> Delete
                             </label>
+
                         </div>
+
                         {
                             deletingTask && <ConfirmationModal title={`Are you sure, you want to delete?`} message={`If you delete "${deletingTask.name}", It cannot be undo.`} closeModal={closeModal} successAction={deleteTask} modalData={deletingTask} successButtonName="Delete"></ConfirmationModal>
                         }

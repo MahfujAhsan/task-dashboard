@@ -27,9 +27,9 @@ const CreateNew = () => {
     return (
         <>
             <div>
-                <h3 className='text-[32px] text-center font-mono font-semibold'><span className='text-[#F17D9A]'>Create </span><span className='text-[#46C4CA]'>Task</span></h3>
-                <div className='mx-[20px] my-[20px] flex items-center'>
-                    <form className='flex-1' onSubmit={handleSubmit(handleAddDoctor)}>
+                <h3 className='text-[32px] text-center font-mono font-semibold mt-[25px]'><span className='text-[#F17D9A]'>Create </span><span className='text-[#46C4CA]'>Task</span></h3>
+                <div className='mx-[20px] my-[50px] flex items-center flex-col-reverse md:flex-row'>
+                    <form className='w-full md:flex-1 mb-[25px] md:mb-0' onSubmit={handleSubmit(handleAddDoctor)}>
                         <div className="common__form__control">
                             <input {...register("name", { required: "Name is Required*" })} placeholder="Task Title" type="text" className="common__inputs px-[20px] py-[10px]" />
                             {errors.name && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.name.message}</p>}
@@ -44,8 +44,8 @@ const CreateNew = () => {
                             <input type="submit" className="input_btn" value="Add Task" />
                         </div>
                     </form>
-                    <div className='flex-1'>
-                        <img className='w-full' src={taskIllustration} alt="" />
+                    <div className='w-full md:flex-1'>
+                        <img className='w-9/12 mx-auto md:w-full' src={taskIllustration} alt="" />
                     </div>
                 </div>
 

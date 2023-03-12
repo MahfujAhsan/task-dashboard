@@ -24,7 +24,7 @@ const Completed = () => {
 
     return (
         <section>
-            <h3 className='text-[32px] text-center font-mono font-semibold'><span className='text-[#46C4CA]'>Completed </span><span className='text-[#F17D9A]'>Task</span></h3>
+            <h3 className='text-[32px] text-center font-mono font-semibold mt-[25px]'><span className='text-[#46C4CA]'>Completed </span><span className='text-[#F17D9A]'>Task</span></h3>
             <div className='card__grid'>
                 {
                     tasks.map((task) => <SingleCompleted key={task._id} task={task} refetch={refetch} isLoading={isLoading} />)

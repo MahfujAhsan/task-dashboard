@@ -15,7 +15,7 @@ const Task = ({ task }) => {
                     </div>
                     <div>
                         {
-                            completed && <span className='bg-green-900 px-[8px] py-[3px] text-white rounded-md shadow-md text-[14px] font-semibold'>Completed</span>
+                            completed && <span className='bg-green-900 px-[8px] py-[3px] text-white rounded-md shadow-md text-[10px] font-semibold uppercase'>Completed</span>
                         }
                         {
                             inprogress && <span className='bg-[#46C4CA] px-[8px] py-[3px] text-white rounded-md shadow-md text-[10px] font-semibold uppercase'>Inprogress</span>

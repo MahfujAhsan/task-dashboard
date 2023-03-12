@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { BiGridAlt } from 'react-icons/bi';
-import { AiOutlineEdit, AiOutlineCheckCircle } from 'react-icons/ai';
+import { AiOutlineEdit, AiOutlineCheckCircle, AiOutlineArrowDown } from 'react-icons/ai';
 import { FaTasks } from 'react-icons/fa';
 import { GrInProgress } from 'react-icons/gr';
 import { IoCloseCircleOutline } from 'react-icons/io5';
@@ -10,22 +10,43 @@ import Navbar from '../Navbar/Navbar';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const DashboardLayout = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                localStorage.removeItem('token');
+            })
+            .catch((err) => console.log(err))
+        navigate('/login')
+    }
     return (
         <section>
             <Navbar />
-            <div className="drawer drawer-mobile  fixed">
+            <div className="drawer drawer-mobile fixed">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    {/* <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
                     <Outlet></Outlet>
                 </div>
-                {user && <div className="drawer-side">
+                {user && <div className="drawer-side hidden md:block">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-64 shadow-[#808080] shadow-inner border-none ml-[1px] rounded-lg">
+                    <ul className="menu p-4 w-full md:w-64 border-r-2 bg-[#F17D9A] md:bg-transparent text-white md:text-black">
+                        <ul className='block md:hidden text-center'>
+                            {user?.uid ? <div className="dropdown">
+                                <label tabIndex={0} className="bg-[#46C4CA] text-white font-bold px-[20px] py-[7px] rounded-lg shadow-lg text-[14px] flex items-center gap-x-[10px] cursor-pointer uppercase">{user?.displayName} <AiOutlineArrowDown size={20} /></label>
+                                <ul tabIndex={0} className="dropdown-content menu shadow bg-base-100 rounded-md px-[10px] py-[4px] mt-[10px]">
+                                    <li><button className='px-[18px] py-[4px] font-semibold bg-[#FA4B81] text-white' onClick={handleLogout}>Logout</button></li>
+                                </ul>
+                            </div> : <li>
+                                <Link className='bg-[#46C4CA] text-white font-bold px-[20px] py-[7px] rounded-lg shadow-lg text-[14px]' to="/login">Login</Link>
+                            </li>}
+                        </ul>
                         <NavLink exact activeClassName="active" className='common__flex common__items' to='/'>
                             <BiGridAlt size={22} />
-                            <li className='text-[20px]'>All Tasks</li>
+                            <li className='text-[20px]'>Dashboard</li>
                         </NavLink>
 
                         <NavLink exact activeClassName="active" className='common__flex common__items' to='/create-new'>
