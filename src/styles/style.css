@@ -19,7 +19,7 @@
 }
 
 .card__grid {
-    @apply grid grid-cols-1 md:grid-cols-3 gap-y-[30px] mt-[35px] mb-[150px] md:mb-[50px] place-items-center
+    @apply grid grid-cols-1 md:grid-cols-3 gap-y-[30px] mt-[35px] mb-[100px] place-items-center
 }
 
 .common__card {
