@@ -65,8 +65,8 @@ const SignUp = () => {
     return (
         <div>
            
-            <section className='h-screen flex justify-center items-center w-4/12 mx-auto'>
-                <div className="w-full mx-auto py-[45px] rounded-lg">
+            <section className='h-screen flex justify-center items-center w-10/12 md:w-4/12 mx-auto'>
+                <div className="w-full mx-auto md:py-[45px] rounded-lg">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <h3 className='text-[32px] text-center font-mono font-semibold'><span className='text-[#F17D9A]'>Sign</span> <span className='text-[#46C4CA]'>Up</span></h3>
                         <div className="form-control w-full mx-auto my-[10px]">
