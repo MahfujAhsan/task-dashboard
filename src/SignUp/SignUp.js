@@ -32,7 +32,7 @@ const SignUp = () => {
             });
     };
 
-    if (loading) {
+    if(loading) {
         return <Spinner />
     }
 
@@ -41,7 +41,6 @@ const SignUp = () => {
         await createUser(data.email, data.password)
             .then(async (res) => {
                 toast('Congrats. You Have Registered Successfully & Logged In.')
-                navigate("/create-new")
                 const { data: response } = await axios.post('https://task-manager-server-two-self.vercel.app/api/users/login', {
                     email: data.email,
                 });
@@ -49,10 +48,11 @@ const SignUp = () => {
                     displayName: data.name
                 }
                 await updateUser(userInfo)
-                    .then(() => {
-                        saveUser(data.name, data.email)
-                        if (response.accessToken) {
-                            localStorage.setItem('token', response.accessToken);
+                .then(() => {
+                    saveUser(data.name, data.email)
+                    if (response.accessToken) {
+                        localStorage.setItem('token', response.accessToken);
+                        navigate("/create-new")
                         }
                     })
                     .catch(err => { console.log(err) })

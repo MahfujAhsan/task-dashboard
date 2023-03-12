@@ -3,13 +3,12 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
-import Spinner from '../Spinner/Spinner';
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
 
-    const { signIn, user, loading } = useContext(AuthContext);
+    const { signIn, loading } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -26,17 +25,15 @@ const SignIn = () => {
             .then(async (res) => {
                 if (res) {
                     setLoginUserEmail(data.email);
-
-                    console.log("logged in successfully")
-                    navigate("/create-new")
+                    console.log(res)
                     const { data: response } = await axios.post('https://task-manager-server-two-self.vercel.app/api/users/login', {
                         email: data.email,
                     });
 
                     if (response.accessToken) {
+                        navigate(from, { replace: true })
                         localStorage.setItem('token', response.accessToken);
                     }
-                
                 }
             })
             .catch((err) => {
@@ -44,10 +41,6 @@ const SignIn = () => {
             })
 
     };
-
-    if (loading) {
-        return <Spinner />
-    }
 
 
     return (
@@ -65,9 +58,9 @@ const SignIn = () => {
                             <input {...register("password", { required: "Password is Required*", minLength: { value: 6, message: "6 char required" } })} type="password" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Password' />
                             {errors.password && <p className="text-[14px] mt-[8px] ml-[4px] font-bold text-error">{errors.password.message}</p>}
                         </div>
-                            <label className="label cursor-pointer">
-                                <span className="label-text text-[16px] mt-[10px] font-semibold text-[#808080]">Forgot Password?</span>
-                            </label>
+                        <label className="label cursor-pointer">
+                            <span className="label-text text-[16px] mt-[10px] font-semibold text-[#808080]">Forgot Password?</span>
+                        </label>
 
                         <div className="form-control w-full mx-auto">
                             <input type="submit" className="btn bg-gradient-to-r from-[#F85185] to-[#46C4CA] border-none w-full mx-auto font-bold text-[16px] text-white mt-[5px]" value="Login" />
