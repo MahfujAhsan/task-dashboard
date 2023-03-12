@@ -71,17 +71,17 @@ const SignUp = () => {
                         <h3 className='text-[32px] text-center font-mono font-semibold'><span className='text-[#F17D9A]'>Sign</span> <span className='text-[#46C4CA]'>Up</span></h3>
                         <div className="form-control w-full mx-auto my-[10px]">
                             <input {...register("name", { required: "Name is Required*" })} type="text" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Your Name' />
-                            {errors.name && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.name.message}</p>}
+                            {errors.name && <p className="text-[14px] mt-[15px] font-bold text-error">{errors.name.message}</p>}
                         </div>
 
                         <div className="form-control w-full mx-auto my-[30px]">
                             <input {...register("email", { required: "Email is Required*" })} type="text" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Email Address' />
-                            {errors.email && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.email.message}</p>}
+                            {errors.email && <p className="text-[14px] mt-[15px] font-bold text-error">{errors.email.message}</p>}
                         </div>
 
                         <div className="form-control w-full mx-auto my-[10px]">
-                            <input {...register("password", { required: "Password is Required*", minLength: { value: 6, message: "6 char required" }, pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: "Password must be strong" } })} type="password" placeholder='Password (ex: M@2288)' className="input w-full shadow-md shadow-accent focus:outline-none" />
-                            {errors.password && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.password.message}</p>}
+                            <input {...register("password", { required: "Password is Required*", minLength: { value: 6, message: "6 char required" }, pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: "one latter, one symbol, one number" } })} type="password" placeholder='Password (ex: M@2288)' className="input w-full shadow-md shadow-accent focus:outline-none" />
+                            {errors.password && <p className="text-[14px] mt-[15px] font-bold text-error">{errors.password.message}</p>}
                         </div>
 
                         <div className="form-control w-12/12 mx-auto  mt-[25px]">
