@@ -37,11 +37,11 @@ const SignIn = () => {
                         localStorage.setItem('token', response.accessToken);
                     }
                 }
+                setIsLoading(true)
             })
             .catch((err) => {
                 setLoginError(err.message)
             })
-        setIsLoading(true)
 
     };
 
