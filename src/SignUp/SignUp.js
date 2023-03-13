@@ -4,12 +4,13 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
-import Spinner from '../Spinner/Spinner';
 
 const SignUp = () => {
+    const [isLoading, setIsLoading] = useState(false);
+
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { createUser, updateUser, loading } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
 
     const [signUpError, setSignUpError] = useState('');
 
@@ -30,9 +31,11 @@ const SignUp = () => {
             .then(data => {
                 console.log(data)
             });
+        setIsLoading(true)
     };
-    
+
     const onSubmit = async (data) => {
+        setIsLoading(true)
         await createUser(data.email, data.password)
             .then(async (res) => {
                 toast('Congrats. You Have Registered Successfully & Logged In.')
@@ -43,11 +46,11 @@ const SignUp = () => {
                     displayName: data.name
                 }
                 await updateUser(userInfo)
-                .then(() => {
-                    saveUser(data.name, data.email)
-                    if (response.accessToken) {
-                        localStorage.setItem('token', response.accessToken);
-                        navigate("/create-new")
+                    .then(() => {
+                        saveUser(data.name, data.email)
+                        if (response.accessToken) {
+                            localStorage.setItem('token', response.accessToken);
+                            navigate("/create-new")
                         }
                     })
                     .catch(err => { console.log(err) })
@@ -59,7 +62,7 @@ const SignUp = () => {
 
     return (
         <div>
-           
+
             <section className='h-screen flex justify-center items-center w-10/12 md:w-4/12 mx-auto'>
                 <div className="w-full mx-auto md:py-[45px] rounded-lg">
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -80,7 +83,7 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-control w-12/12 mx-auto  mt-[25px]">
-                            <input type="submit" className="btn bg-gradient-to-r from-[#46C4CA] to-[#F85185] w-full mx-auto font-bold text-[16px] text-white mt-[5px] border-none" value="Register" />
+                            <input type="submit" className="btn bg-gradient-to-r from-[#46C4CA] to-[#F85185] w-full mx-auto font-bold text-[16px] text-white mt-[5px] border-none" value="Register" disabled={isLoading && true} />
                         </div>
                         {
                             signUpError && <p className="text-error">{signUpError}</p>

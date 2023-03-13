@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const SignIn = () => {
+    const [isLoading, setIsLoading] = useState(false);
+
     const { register, handleSubmit, formState: { errors } } = useForm();
 
 
@@ -39,6 +41,7 @@ const SignIn = () => {
             .catch((err) => {
                 setLoginError(err.message)
             })
+        setIsLoading(true)
 
     };
 
@@ -63,7 +66,7 @@ const SignIn = () => {
                         </label>
 
                         <div className="form-control w-full mx-auto">
-                            <input type="submit" className="btn bg-gradient-to-r from-[#F85185] to-[#46C4CA] border-none w-full mx-auto font-bold text-[16px] text-white mt-[5px]" value="Login" />
+                            <input type="submit" className="btn bg-gradient-to-r from-[#F85185] to-[#46C4CA] border-none w-full mx-auto font-bold text-[16px] text-white mt-[5px]" value="Login" disabled={isLoading && true}/>
                         </div>
                         <div>
                             {
