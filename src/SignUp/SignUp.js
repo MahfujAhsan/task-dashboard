@@ -31,12 +31,7 @@ const SignUp = () => {
                 console.log(data)
             });
     };
-
-    if(loading) {
-        return <Spinner />
-    }
-
-
+    
     const onSubmit = async (data) => {
         await createUser(data.email, data.password)
             .then(async (res) => {
