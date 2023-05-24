@@ -8,7 +8,9 @@ const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
 
-    const { signIn, loading } = useContext(AuthContext);
+    const { signIn, loading, user } = useContext(AuthContext);
+
+    console.log(user)
 
     const navigate = useNavigate();
 
@@ -25,6 +27,7 @@ const SignIn = () => {
             .then(async (res) => {
                 if (res) {
                     setLoginUserEmail(data.email);
+                    navigate('/');
                     const { data: response } = await axios.post('https://task-managerserver.vercel.app/api/users/login', {
                         email: data.email,
                     }, {
@@ -48,35 +51,37 @@ const SignIn = () => {
 
     return (
         <div>
-            <section className='h-screen flex justify-center items-center w-10/12 md:w-4/12 mx-auto'>
-                <div className="w-full mx-auto md:py-[45px] rounded-lg">
-                    <h3 className='text-[32px] text-center font-mono font-semibold'><span className='text-[#F17D9A]'>Log</span><span className='text-[#46C4CA]'>In</span></h3>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-control w-full mx-auto my-[10px]">
-                            <input {...register("email", { required: "Email is Required*" })} type="text" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Email' />
-                            {errors.email && <p className="text-[14px] mt-[8px] ml-[4px] font-bold text-error">{errors.email.message}</p>}
-                        </div>
+            {
+                user ? <p className='flex justify-center items-center h-screen text-3xl font-semibold'>You Have Already LoggedIn.</p> : <section className='h-screen flex justify-center items-center w-10/12 md:w-4/12 mx-auto'>
+                    <div className="w-full mx-auto md:py-[45px] rounded-lg">
+                        <h3 className='text-[32px] text-center font-mono font-semibold'><span className='text-[#F17D9A]'>Log</span><span className='text-[#46C4CA]'>In</span></h3>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="form-control w-full mx-auto my-[10px]">
+                                <input {...register("email", { required: "Email is Required*" })} type="text" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Email' />
+                                {errors.email && <p className="text-[14px] mt-[8px] ml-[4px] font-bold text-error">{errors.email.message}</p>}
+                            </div>
 
-                        <div className="form-control w-full mx-auto my-[20px]">
-                            <input {...register("password", { required: "Password is Required*", minLength: { value: 6, message: "6 char required" } })} type="password" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Password' />
-                            {errors.password && <p className="text-[14px] mt-[8px] ml-[4px] font-bold text-error">{errors.password.message}</p>}
-                        </div>
-                        <label className="label cursor-pointer">
-                            <span className="label-text text-[16px] mt-[10px] font-semibold text-[#808080]">Forgot Password?</span>
-                        </label>
+                            <div className="form-control w-full mx-auto my-[20px]">
+                                <input {...register("password", { required: "Password is Required*", minLength: { value: 6, message: "6 char required" } })} type="password" className="input w-full shadow-md shadow-accent focus:outline-none" placeholder='Password' />
+                                {errors.password && <p className="text-[14px] mt-[8px] ml-[4px] font-bold text-error">{errors.password.message}</p>}
+                            </div>
+                            <label className="label cursor-pointer">
+                                <span className="label-text text-[16px] mt-[10px] font-semibold text-[#808080]">Forgot Password?</span>
+                            </label>
 
-                        <div className="form-control w-full mx-auto">
-                            <input type="submit" className="btn bg-gradient-to-r from-[#F85185] to-[#46C4CA] border-none w-full mx-auto font-bold text-[16px] text-white mt-[5px]" value="Login" />
-                        </div>
-                        <div>
-                            {
-                                loginError && <p className="text-center mt-[15px] text-error">{loginError}</p>
-                            }
-                        </div>
-                    </form>
-                    <p className="text-center text-[18px] mt-[35px] font-semibold"><span className='font-semibold text-[#F85185]'>New to  Task Manager?</span> <Link className="font-semibold text-[#46C4CA]" to="/signup">Create New Account</Link></p>
-                </div>
-            </section>
+                            <div className="form-control w-full mx-auto">
+                                <input type="submit" className="btn bg-gradient-to-r from-[#F85185] to-[#46C4CA] border-none w-full mx-auto font-bold text-[16px] text-white mt-[5px]" value="Login" />
+                            </div>
+                            <div>
+                                {
+                                    loginError && <p className="text-center mt-[15px] text-error">{loginError}</p>
+                                }
+                            </div>
+                        </form>
+                        <p className="text-center text-[18px] mt-[35px] font-semibold"><span className='font-semibold text-[#F85185]'>New to  Task Manager?</span> <Link className="font-semibold text-[#46C4CA]" to="/signup">Create New Account</Link></p>
+                    </div>
+                </section>
+            }
         </div>
     );
 };

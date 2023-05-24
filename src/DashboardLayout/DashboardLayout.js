@@ -12,6 +12,8 @@ import { AuthContext } from '../contexts/AuthProvider';
 const DashboardLayout = () => {
     const { user, logOut } = useContext(AuthContext);
 
+    console.log(user)
+
     const navigate = useNavigate();
 
     const handleLogout = () => {
