@@ -3,9 +3,12 @@ import { MdDeleteOutline } from 'react-icons/md';
 import { FaRedoAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import ConfirmationModal from '../hooks/ConfirmationModal';
+import { ImSpinner } from 'react-icons/im';
 
 const SingleCanceled = ({ task, refetch, isLoading }) => {
     const [deletingTask, setDeletingTask] = useState(null);
+
+    const [loading, setLoading] = useState(false);
 
     const closeModal = () => {
         setDeletingTask(null);
@@ -37,6 +40,7 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
         catch (error) {
             toast(error.message);
         }
+        setLoading(true)
     }
 
     const deleteTask = async (id) => {
@@ -75,7 +79,7 @@ const SingleCanceled = ({ task, refetch, isLoading }) => {
                             <p className='text-[15px] text-[#808080] mt-[6px]'>{description}</p>
                         </div>
                         <div className='flex items-center justify-between'>
-                            <button className='px-[18px] py-[4px] bg-[#46C4CA] text-white rounded-md shadow-md flex items-center gap-x-[5px]' onClick={() => handleUndo(task)}><FaRedoAlt /> Undo</button>
+                            {loading ? <div className='flex justify-center items-center'><ImSpinner className='animate-spin' /></div> : <button disabled={loading && true} className='px-[18px] py-[4px] bg-[#46C4CA] text-white rounded-md shadow-md flex items-center gap-x-[5px]' onClick={() => handleUndo(task)}><FaRedoAlt /> Undo</button>}
 
                             <label onClick={() => setDeletingTask(task)} htmlFor="confirmation-modal" className="flex items-center bg-[#F85185] text-white px-[12px] py-[3px] rounded-md shadow-md font-semibold cursor-pointer">
                                 <MdDeleteOutline size={22} /> Delete

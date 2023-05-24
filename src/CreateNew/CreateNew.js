@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import taskIllustration from "../assets/todo.jpg";
+import { ImSpinner } from 'react-icons/im';
 
 const CreateNew = () => {
+    const [isLoading, setIsLoading] = useState(false);
+
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const navigate = useNavigate();
@@ -23,6 +26,7 @@ const CreateNew = () => {
                 toast.success((`${data?.name} is Added Successfully`))
                 navigate("/new-tasks")
             })
+        setIsLoading(true)
     }
     return (
         <>
@@ -32,16 +36,17 @@ const CreateNew = () => {
                     <form className='w-full md:flex-1 mb-[25px] md:mb-0' onSubmit={handleSubmit(handleAddDoctor)}>
                         <div className="common__form__control">
                             <input {...register("name", { required: "Name is Required*" })} placeholder="Task Title" type="text" className="common__inputs px-[20px] py-[10px]" />
-                            {errors.name && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.name.message}</p>}
+                            {errors.name && <p className="text-[14px] mt-[15px] font-bold text-error">{errors.name.message}</p>}
                         </div>
 
                         <div className="common__form__control">
                             <input {...register("description", { required: "Description is Required*" })} placeholder="Task Information" type="text" className="common__inputs pt-[20px] pb-[200px] px-[20px]" />
-                            {errors.description && <p className="text-[20px] mt-[15px] font-bold text-error">{errors.description.message}</p>}
+                            {errors.description && <p className="text-[14px] mt-[15px] font-bold text-error">{errors.description.message}</p>}
                         </div>
 
                         <div className="form-control w-full my-[10px]">
-                            <input type="submit" className="input_btn" value="Add Task" />
+                            {isLoading && <div className='flex justify-center items-center'><ImSpinner className='animate-spin' /></div>}
+                            <input type="submit" className="input_btn" value="Add Task" disabled={isLoading && true}/>
                         </div>
                     </form>
                     <div className='w-full md:flex-1'>
