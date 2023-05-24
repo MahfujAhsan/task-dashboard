@@ -39,9 +39,14 @@ const SignUp = () => {
         await createUser(data.email, data.password)
             .then(async (res) => {
                 toast('Congrats. You Have Registered Successfully & Logged In.')
-                const { data: response } = await axios.post('https://task-manager-server-two-self.vercel.app/api/users/login', {
+                const { data: response } = await axios.post('https://task-managerserver.vercel.app/api/users/login', {
                     email: data.email,
-                });
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                );
                 const userInfo = {
                     displayName: data.name
                 }
