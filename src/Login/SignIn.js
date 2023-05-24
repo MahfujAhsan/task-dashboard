@@ -25,9 +25,12 @@ const SignIn = () => {
             .then(async (res) => {
                 if (res) {
                     setLoginUserEmail(data.email);
-                    console.log(res)
                     const { data: response } = await axios.post('https://task-manager-server-two-self.vercel.app/api/users/login', {
                         email: data.email,
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
                     });
 
                     if (response.accessToken) {
