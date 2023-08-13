@@ -13,7 +13,7 @@ const CreateNew = () => {
     const navigate = useNavigate();
 
     const handleAddDoctor = (data) => {
-        fetch("https://task-manager-server-two-self.vercel.app/api/tasks", {
+        fetch("https://task-managerserver.vercel.app/api/tasks", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const CreateNew = () => {
 
                         <div className="form-control w-full my-[10px]">
                             {isLoading && <div className='flex justify-center items-center'><ImSpinner className='animate-spin' /></div>}
-                            <input type="submit" className="input_btn" value="Add Task" disabled={isLoading && true}/>
+                            <input type="submit" className="input_btn" value="Add Task" disabled={isLoading && true} />
                         </div>
                     </form>
                     <div className='w-full md:flex-1'>

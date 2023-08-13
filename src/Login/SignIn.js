@@ -33,6 +33,7 @@ const SignIn = () => {
                     }, {
                         headers: {
                             'Content-Type': 'application/json',
+                            'authorization': 'Bearer ' + localStorage.getItem('token')
                         }
                     });
 

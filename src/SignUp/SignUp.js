@@ -19,7 +19,7 @@ const SignUp = () => {
 
     const saveUser = (name, email) => {
         const user = { name, email };
-        fetch('https://task-manager-server-two-self.vercel.app/api/users', {
+        fetch('https://task-managerserver.vercel.app/api/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -44,7 +44,8 @@ const SignUp = () => {
                     email: data.email,
                 }, {
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'authorization': 'Bearer ' + localStorage.getItem('token')
                     }
                 }
                 );

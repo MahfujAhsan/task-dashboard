@@ -23,7 +23,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
             inprogress: true,
         };
         try {
-            await fetch(`https://task-manager-server-two-self.vercel.app/api/tasks/${task._id}`, {
+            await fetch(`https://task-managerserver.vercel.app/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
             completed: true,
         };
         try {
-            await fetch(`https://task-manager-server-two-self.vercel.app/api/tasks/${task._id}`, {
+            await fetch(`https://task-managerserver.vercel.app/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
         };
 
         try {
-            await fetch(`https://task-manager-server-two-self.vercel.app/api/tasks/${task._id}`, {
+            await fetch(`https://task-managerserver.vercel.app/api/tasks/${task._id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ const NewTask = ({ task, refetch, isLoading }) => {
 
     const deleteTask = async (id) => {
         try {
-            await fetch(`https://task-manager-server-two-self.vercel.app/api/tasks/${id}`, {
+            await fetch(`https://task-managerserver.vercel.app/api/tasks/${id}`, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json', 'authorization': 'Bearer ' + localStorage.getItem('token'),

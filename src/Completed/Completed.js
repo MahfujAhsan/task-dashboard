@@ -7,7 +7,7 @@ const Completed = () => {
     const { data: tasks = [], refetch, isLoading } = useQuery({
         queryKey: ['tasks'],
         queryFn: async () => {
-            const res = await fetch('https://task-manager-server-two-self.vercel.app/api/tasks', {
+            const res = await fetch('https://task-managerserver.vercel.app/api/tasks', {
                 headers: {
                     'Content-Type': 'application/json',
                     'authorization': 'Bearer ' + localStorage.getItem('token'),
